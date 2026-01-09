@@ -1,0 +1,1 @@
+# next.jsとmicroCMSをつかってVercelでブログを構築するテスト
