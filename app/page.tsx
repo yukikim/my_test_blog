@@ -1,0 +1,24 @@
+import { microcmsClient } from "@/lib/microcms";
+import type { Post } from "@/types/post";
+import PostList from "@/components/PostList";
+
+export const revalidate = 60; // ISR: 60秒ごとに再生成
+
+async function getPosts() {
+  try {
+    const data = await microcmsClient.getList<Post>({ endpoint: "blogs" });
+    return data.contents;
+  } catch {
+    return [];
+  }
+}
+
+export default async function Home() {
+  const posts = await getPosts();
+  return (
+    <main className="mx-auto max-w-5xl p-6">
+      <h1 className="mb-6 text-2xl font-bold">Blog</h1>
+      <PostList posts={posts} />
+    </main>
+  );
+}
