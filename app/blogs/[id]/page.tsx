@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { microcmsClient } from "@/lib/microcms";
 import type { Post } from "@/types/post";
+import { sanitizeHTML } from "@/lib/sanitize";
 
 export const revalidate = 60;
 
@@ -42,6 +43,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
       break;
     }
   }
+  const safe = sanitizeHTML(html);
   return (
     <main className="mx-auto max-w-3xl p-6">
       <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
@@ -53,7 +55,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
       {html ? (
         <article
           className="leading-7 text-zinc-800 dark:text-zinc-200 space-y-4"
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{ __html: safe }}
         />
       ) : (
         <p className="text-zinc-500">本文がありません。</p>
