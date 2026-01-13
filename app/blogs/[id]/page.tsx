@@ -31,9 +31,13 @@ async function getPost(id: string) {
 
 export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  if (!id) return notFound();
+
   const post = await getPost(id);
-  console.log(post);
+  console.log("params.id:", id);
+  console.log("post:", post);
   if (!post) return notFound();
+
   const candidates = ["content", "body", "text", "description", "richtext", "html"] as const;
   let html = "";
   for (const key of candidates) {
