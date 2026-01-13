@@ -4,6 +4,7 @@
 - 本プロジェクトは Next.js 16（App Router）と microCMS を用いたブログサイトです。
 - デプロイ対象は Vercel。ISR（60秒）で再生成されます。
 - エンドポイントは `blogs` に統一し、本文が無いケースにも堅牢に対応しました。
+  - `PREVIEW_SECRET=***`（ドラフトプレビュー用の任意の長い文字列）
 
 ## 技術スタック
 - Next.js 16 / React 19 / TypeScript
@@ -12,6 +13,44 @@
 - サニタイズ: sanitize-html（SSRでHTMLを安全化）
 
 ## 環境変数
+---
+## 下書きプレビュー（microCMSプレビュートークン対応）
+ドラフトの内容をサイトで確認できるように、`draftKey` と Next.js のドラフトモードに対応しています。
+
+### 事前準備
+- `.env.local` に `PREVIEW_SECRET` を設定（本番では Vercel の Environment Variables にも設定）
+- microCMS管理画面の各コンテンツ詳細で「プレビュー」を開き、`draftKey` を取得
+
+### 確認方法（2通り）
+- 直接アクセス（簡易）
+  - `/blogs/{id}?draftKey={取得したプレビュートークン}`
+- ドラフトモードを有効化してリダイレクト（推奨）
+  - `/api/preview?secret={PREVIEW_SECRET}&redirect=/blogs/{id}?draftKey={トークン}`
+  - 正常な `secret` の場合、Next.js のドラフトモードが有効化され、指定のURLへ移動します。
+
+### 仕様メモ
+- 詳細ページ: [app/blogs/[id]/page.tsx](../app/blogs/%5Bid%5D/page.tsx)
+  - `searchParams.draftKey` を検出して `microcmsClient.getListDetail()` に `queries: { draftKey }` を渡します。
+  - 本文はサニタイズ後に描画します（XSS対策）。
+- プレビューAPI: [app/api/preview/route.ts](../app/api/preview/route.ts)
+  - `?secret=...` を検証し、`draftMode().enable()` を実行してから `redirect` へ遷移します。
+- 解除方法
+  - （簡易）ブラウザのCookieをクリア、またはシークレットウィンドウを閉じる
+  - （必要なら）`disable` の専用ルートを追加可能です。希望があれば実装します。
+
+  ---
+  ## 更新履歴（2026-01-13）
+  - **エンドポイント統一:** `posts` → `blogs` に切替え。既存コードとREADMEを更新。
+  - **本文検出の強化:** `content → body → text → description → richtext → html` の順で自動検出。
+  - **HTMLサニタイズ導入:** `sanitize-html` を追加し [lib/sanitize.ts](../lib/sanitize.ts) を新規作成。詳細ページでサニタイズ後に描画。
+  - **カテゴリ対応:** [types/category.ts](../types/category.ts) 追加、[app/categories/page.tsx](../app/categories/page.tsx) と [app/categories/[id]/page.tsx](../app/categories/%5Bid%5D/page.tsx) を実装。記事詳細にカテゴリリンクを追加。
+  - **ナビ追加:** [app/layout.tsx](../app/layout.tsx) にヘッダー（Home / Categories）を追加。
+  - **フィード/サイトマップ:** [app/rss.xml/route.ts](../app/rss.xml/route.ts), [app/atom.xml/route.ts](../app/atom.xml/route.ts), [app/sitemap.ts](../app/sitemap.ts) を追加。サイトURL解決の [lib/site.ts](../lib/site.ts) を新規作成。
+  - **ドラフトプレビュー対応:** [app/blogs/[id]/page.tsx](../app/blogs/%5Bid%5D/page.tsx) で `searchParams.draftKey` に対応。 [app/api/preview/route.ts](../app/api/preview/route.ts) を追加し `PREVIEW_SECRET` 検証、相対 `redirect` を絶対URL化、`runtime="nodejs"` を設定。`redirect`に`draftKey`が含まれる場合は `draftMode().enable()` をスキップして安定化。
+  - **Next.js 16対応:** 動的ルートで `params` を `await` して使用するよう修正。
+  - **型拡張:** [types/post.ts](../types/post.ts) に `category` フィールドを追加し、動的フィールドを許容。
+  - **画像許可:** [next.config.ts](../next.config.ts) で `images.microcms-assets.io` を許可。
+
 - `.env.local` に以下を設定
   - `MICROCMS_SERVICE_DOMAIN=u17tqsykhx`
   - `MICROCMS_API_KEY=***`（機密のためVercelにも同値を設定）
