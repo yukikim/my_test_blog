@@ -3,6 +3,10 @@ export type Post = {
   title: string;
   body?: string;
   content?: string; // fallback: microCMSで本文フィールドIDがcontentの場合
+  category?: {
+    id: string;
+    name?: string;
+  } | null;
   eyecatch?: {
     url: string;
     width: number;

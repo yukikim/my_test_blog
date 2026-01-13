@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { microcmsClient } from "@/lib/microcms";
 import type { Post } from "@/types/post";
 import { sanitizeHTML } from "@/lib/sanitize";
+import Link from "next/link";
 
 export const revalidate = 60;
 
@@ -51,6 +52,13 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
   return (
     <main className="mx-auto max-w-3xl p-6">
       <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
+      {post.category?.id && (
+        <div className="mb-4 text-sm">
+          <Link className="text-blue-600 hover:underline" href={`/categories/${post.category.id}`}>
+            #{post.category.name ?? "category"}
+          </Link>
+        </div>
+      )}
       {post.publishedAt && (
         <div className="mb-8 text-sm text-zinc-500">
           {new Date(post.publishedAt).toLocaleDateString()}
