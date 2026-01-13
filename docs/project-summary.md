@@ -89,3 +89,156 @@ npm run build
 - RSS/サイトマップ生成（SEO）
 - 下書きプレビュー（プレビュートークン対応）
 - OG画像生成
+
+---
+## カテゴリ一覧・詳細ページを追加
+カテゴリ一覧・詳細ページを追加し、フィルタ表示を実装します。型の追加とページ作成、必要ならリンクも最小限で入れます。
+
+[](file:///Users/greenpowermarco/personal_files/my_app/my_test_blog/app/layout.tsx) の読み取り
+
+[](file:///Users/greenpowermarco/personal_files/my_app/my_test_blog/types/post.ts) の読み取り
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+[](file:///Users/greenpowermarco/personal_files/my_app/my_test_blog/types/category.ts) が作成されました
+
+[](file:///Users/greenpowermarco/personal_files/my_app/my_test_blog/app/categories/page.tsx) が作成されました
+
+[](file:///Users/greenpowermarco/personal_files/my_app/my_test_blog/app/categories/%5Bid%5D/page.tsx) が作成されました
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+Ran terminal command:  npm run build
+
+Ran terminal command:  npm i -D @types/sanitize-html
+
+Ran terminal command:  npm run build
+
+了解です。カテゴリ対応を実装し、ビルドまで通しました。要点をまとめます。
+
+- 追加/変更
+  - 新規: category.ts — `Category`型を定義
+  - 型拡張: post.ts — `category?: { id; name? }` を追加
+  - 一覧: page.tsx — カテゴリ一覧（`categories`エンドポイント）を表示
+  - 詳細: [app/categories/[id]/page.tsx](app/categories/%5Bid%5D/page.tsx) — カテゴリ詳細＋該当ブログ一覧を表示
+    - `filters=category[equals]{id}` で `blogs` を絞り込み
+    - `generateStaticParams()`でカテゴリIDをSSG化、ISRは60秒
+  - 連携: [app/blogs/[id]/page.tsx](app/blogs/%5Bid%5D/page.tsx) — 記事詳細にカテゴリへのリンクを追加
+  - ナビ: layout.tsx — ヘッダーに「Home / Categories」ナビを追加
+  - サニタイズ型: `sanitize-html` 導入済み、型定義 `@types/sanitize-html` 追加
+
+- ビルド結果
+  - `blogs`と`categories`のSSGが生成され、ISR=60秒で再生成
+  - ルート一覧に`/categories`と`/categories/[id]`が追加され、フィルタ表示が有効
+
+- 使い方
+  - カテゴリ一覧: /categories
+  - カテゴリ詳細（絞り込み）: /categories/{categoryId}
+  - 記事詳細からカテゴリリンクで遷移可能
+
+- 補足
+  - 旧`/posts/[id]`がルート一覧に残っています。完全に一本化する場合、開発サーバ停止後にpostsディレクトリを削除できます。
+
+---
+
+## RSS/Atomフィードとサイトマップを追加
+RSS/Atomフィードとサイトマップを追加します。サイトURL取得ヘルパーを作り、sitemapと各XMLルートを実装します。
+
+Created 1 todo
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+Using "パッチの適用"
+
+
+```
+
+```
+
+
+Ran terminal command:  npm run dev
+
+Ran terminal command:  curl -s http://localhost:3000/sitemap.xml | head -n 20 && echo '---' && curl -s http://localhost:3000/rss.xml | head -n 20 && echo '---' && curl -s http://localhost:3000/atom.xml | head -n 20
+
+追加完了です。RSS/Atomとサイトマップを生成しました。以下のURLで配信されます。
+
+- フィード
+  - RSS: /rss.xml
+  - Atom: /atom.xml
+- サイトマップ
+  - /sitemap.xml
+
+実装ポイント
+- サイトURL解決: site.ts
+  - `NEXT_PUBLIC_SITE_URL` → `SITE_URL` → `https://${VERCEL_URL}` → `http://localhost:3000` の順で決定
+- サイトマップ: sitemap.ts
+  - トップ、カテゴリ一覧、各ブログ記事、各カテゴリ詳細を出力
+  - `revalidate = 60`（60秒）で再生成
+- RSS: route.ts
+  - RSS 2.0。最新50件（`blogs`）を配信
+  - 本文は`content`をサニタイズして`description`にCDATA埋め込み
+- Atom: route.ts
+  - Atom 1.0。最新50件を配信
+  - 本文は`content type="html"`でCDATA埋め込み
+- サニタイズ: sanitize.ts
+  - `sanitize-html`で安全化（主要タグ/属性を許可）
+- 依存追加
+  - `sanitize-html`
+  - 型定義 `@types/sanitize-html`
+
+使い方と運用
+- 本番URLで正しい絶対URLにするため、Vercelのプロジェクト環境変数に`NEXT_PUBLIC_SITE_URL`（例: https://your-domain.com）を設定してください。
+- 生成件数やURL対象（例: ページング、他の固定ページ等）を増やす場合はお知らせください。
+
+確認
+- ローカルで下記にアクセスして内容をご確認ください。
+  - http://localhost:3000/sitemap.xml
+  - http://localhost:3000/rss.xml
+  - http://localhost:3000/atom.xml
+
+調整リクエスト（任意）
+- 項目拡張（概要/サマリー、著者、カテゴリの出力）
+- 件数・並び順の変更
+- robots.txtへのサイトマップ追記（/robots.txt）
