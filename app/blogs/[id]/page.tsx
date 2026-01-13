@@ -18,11 +18,12 @@ export async function generateStaticParams() {
   }
 }
 
-async function getPost(id: string) {
+async function getPost(id: string, draftKey?: string) {
   try {
     const data = await microcmsClient.getListDetail<Post>({
       endpoint: "blogs",
       contentId: id,
+      queries: draftKey ? { draftKey } : undefined,
     });
     return data as Post;
   } catch {
@@ -30,13 +31,14 @@ async function getPost(id: string) {
   }
 }
 
-export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function PostPage({ params, searchParams }:
+  { params: Promise<{ id: string }>, searchParams?: Promise<{ [key: string]: string | undefined }> }) {
   const { id } = await params;
+  const qp = searchParams ? await searchParams : {};
+  const draftKey = qp?.draftKey;
   if (!id) return notFound();
 
-  const post = await getPost(id);
-  console.log("params.id:", id);
-  console.log("post:", post);
+  const post = await getPost(id, draftKey);
   if (!post) return notFound();
 
   const candidates = ["content", "body", "text", "description", "richtext", "html"] as const;
