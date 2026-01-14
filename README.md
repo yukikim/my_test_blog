@@ -14,6 +14,9 @@ This is a Next.js + microCMS blog project bootstrapped with create-next-app.
 ```
 MICROCMS_SERVICE_DOMAIN=your-service
 MICROCMS_API_KEY=your-api-key
+RESEND_API_KEY=your-resend-key
+COMMENTS_TO_EMAIL=owner@example.com
+COMMENTS_FROM_EMAIL=onboarding@resend.dev
 ```
 
 3) Install dependencies
@@ -39,6 +42,32 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Homepage lists blogs from microCMS. Create contents in microCMS to see items.
+## Comments (Stored + reCAPTCHA)
+
+This project stores comments in microCMS and displays them on each blog page.
+
+- API: `/api/comments`
+	- `GET ?postId=...`: List comments
+	- `POST { postId, name?, email?, message, recaptchaToken }`: Create comment
+	- `DELETE { id, deleteToken }`: Delete own comment
+- UI:
+	- `CommentsList` shows existing comments and allows deletion if you have the delete token.
+	- `CommentForm` posts new comments and handles reCAPTCHA v3.
+
+Environment variables:
+
+```
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
+RECAPTCHA_SECRET_KEY=your-secret
+```
+
+microCMS setup:
+- Create a `comments` API with fields: `postId (Text)`, `name (Text)`, `email (Text)`, `message (Text Area)`, `deleteToken (Text)`.
+
+Notes:
+- Delete is authorized by a random `deleteToken` stored only on the device used to post.
+- For better auth, integrate a user system or admin moderation as needed.
+
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

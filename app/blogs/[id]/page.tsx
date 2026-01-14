@@ -4,6 +4,8 @@ import type { Post } from "@/types/post";
 import { sanitizeHTML } from "@/lib/sanitize";
 import Link from "next/link";
 import CategoryList from "@/components/CategoryList";
+import CommentForm from "@/components/CommentForm";
+import CommentsList from "@/components/CommentsList";
 
 export const revalidate = 60;
 
@@ -75,6 +77,12 @@ export default async function PostPage({ params, searchParams }:
       ) : (
         <p className="text-zinc-500">本文がありません。</p>
       )}
+      <div className="mt-12">
+        <CommentsList postId={post.id} />
+      </div>
+      <div className="mt-12">
+        <CommentForm postId={post.id} />
+      </div>
       <div className="mt-12">
         <CategoryList />
       </div>
