@@ -59,6 +59,8 @@ Environment variables:
 ```
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
 RECAPTCHA_SECRET_KEY=your-secret
+RECAPTCHA_MIN_SCORE=0.5
+RECAPTCHA_DEBUG=true
 ```
 
 microCMS setup:
@@ -67,6 +69,8 @@ microCMS setup:
 Notes:
 - Delete is authorized by a random `deleteToken` stored only on the device used to post.
 - For better auth, integrate a user system or admin moderation as needed.
+- Adjust sensitivity via `RECAPTCHA_MIN_SCORE` (0.0–1.0, default 0.5). Higher blocks more likely bots; lower is more permissive.
+- Enable server-side logging with `RECAPTCHA_DEBUG=true` to print verification results (success, score, action, hostname, errors) in server logs.
 
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
