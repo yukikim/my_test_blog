@@ -69,7 +69,7 @@ export default async function PostPage({ params, searchParams }:
       )}
       {html ? (
         <article
-          className="leading-7 text-zinc-800 dark:text-zinc-200 space-y-4"
+          className="prose text-zinc-800 space-y-4"
           dangerouslySetInnerHTML={{ __html: safe }}
         />
       ) : (

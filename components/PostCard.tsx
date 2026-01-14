@@ -4,7 +4,7 @@ import type { Post } from "@/types/post";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <article className="rounded-lg border bg-white dark:bg-zinc-900 p-4 shadow-sm hover:shadow-md transition-shadow">
+    <article className="rounded-lg border p-4 shadow-sm hover:shadow-md transition-shadow">
       {post.eyecatch?.url && (
         <div className="mb-3 overflow-hidden rounded-md">
           <Image

@@ -24,7 +24,7 @@ export default async function CategoryList() {
       ) : (
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => (
-            <li key={c.id} className="rounded border p-4 bg-white dark:bg-zinc-900">
+            <li key={c.id} className="rounded border p-4 bg-white">
               <Link href={`/categories/${c.id}`} className="hover:underline font-medium">
                 {c.name}
               </Link>
