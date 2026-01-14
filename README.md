@@ -61,10 +61,15 @@ NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
 RECAPTCHA_SECRET_KEY=your-secret
 RECAPTCHA_MIN_SCORE=0.5
 RECAPTCHA_DEBUG=true
+MICROCMS_SERVICE_DOMAIN=your-service
+MICROCMS_API_KEY=read-api-key
+MICROCMS_WRITE_API_KEY=write-api-key
 ```
 
 microCMS setup:
 - Create a `comments` API with fields: `postId (Text)`, `name (Text)`, `email (Text)`, `message (Text Area)`, `deleteToken (Text)`.
+ - Enable Write API in microCMS and generate a Write-enabled API key.
+ - Use `MICROCMS_API_KEY` for read operations and `MICROCMS_WRITE_API_KEY` for create/delete.
 
 Notes:
 - Delete is authorized by a random `deleteToken` stored only on the device used to post.
