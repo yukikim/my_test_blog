@@ -56,3 +56,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 Vercel: yukikim_v's projects (Hobby)
 
 https://my-test-blog-six.vercel.app/
+
+Blog title
+
+The Archive of Oblivion：「忘却の記録」
+
+忘却の記録 ｜ ポンコツウエットウエアの備忘録
