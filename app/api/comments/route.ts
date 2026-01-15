@@ -6,24 +6,27 @@ export const runtime = "nodejs";
 
 async function verifyRecaptcha(token: string | undefined, ip?: string) {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
-  const debug = process.env.RECAPTCHA_DEBUG === "true";
-  if (!secret) return { ok: true, score: 1 }; // 未設定時はスキップ（開発用）
-  if (!token) return { ok: false, score: 0 };
+  if (!secret) return { ok: true }; // 未設定時はスキップ（開発用）
+  if (!token) return { ok: false };
+
   const params = new URLSearchParams({ secret, response: token });
   if (ip) params.set("remoteip", ip);
+
   const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: params,
   });
+
   const data = await res.json();
-  if (debug) {
+
+  if (process.env.RECAPTCHA_DEBUG === "true") {
     const errs = Array.isArray(data["error-codes"]) ? data["error-codes"].join(",") : "";
     console.log(
-      `[reCAPTCHA] success=${data.success} score=${data.score} action=${data.action} hostname=${data.hostname} errors=${errs}`
+      `[reCAPTCHA] success=${data.success} hostname=${data.hostname} errors=${errs}`
     );
   }
-  return { ok: !!data.success, score: typeof data.score === "number" ? data.score : 0 } as { ok: boolean; score: number };
+  return { ok: !!data.success };
 }
 
 export async function GET(req: Request) {
@@ -48,21 +51,8 @@ export async function POST(req: Request) {
     }
 
     const recaptcha = await verifyRecaptcha(recaptchaToken, ip);
-    const rawMin = process.env.RECAPTCHA_MIN_SCORE;
-    const parsed = rawMin ? Number.parseFloat(rawMin) : NaN;
-    const minScore = Number.isFinite(parsed) && parsed >= 0 && parsed <= 1 ? parsed : 0.5;
-    if (process.env.RECAPTCHA_DEBUG === "true") {
-      console.log(`[reCAPTCHA] decision ok=${recaptcha.ok} score=${recaptcha.score} min=${minScore}`);
-    }
     if (!recaptcha.ok) {
       return NextResponse.json({ ok: false, error: "reCAPTCHA verification failed" }, { status: 400 });
-    }
-    // v3のスコアが低い場合はv2のチャレンジを要求
-    if (recaptcha.score < minScore) {
-      // ただし、v2からのリクエスト（スコアがない）の場合はスコアチェックをスキップ
-      if (typeof recaptcha.score !== 'undefined') {
-        return NextResponse.json({ ok: false, error: "reCAPTCHA verification failed" }, { status: 400 });
-      }
     }
 
     // Spam check

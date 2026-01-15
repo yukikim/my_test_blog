@@ -86,7 +86,7 @@ export default function CommentsList({ postId }: Props) {
       ) : (
         <ul className="space-y-4">
           {items.map((c) => (
-            <li key={c.id} className="rounded border p-4 bg-white dark:bg-zinc-900">
+            <li key={c.id} className="rounded border p-4 bg-white">
               <div className="flex items-baseline justify-between gap-4">
                 <span className="font-medium">{c.name || '名無し'}</span>
                 <span className="text-xs text-zinc-500">{c.createdAt ? new Date(c.createdAt).toLocaleString() : ''}</span>
