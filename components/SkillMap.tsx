@@ -19,12 +19,12 @@ export default function SkillMap({ title = "Skills", skills = defaultSkills }: P
       <h2 className="mb-4 text-xl font-semibold">{title}</h2>
       <ul className="space-y-3">
         {skills.map((s) => (
-          <li key={s.name} className="rounded border p-4 bg-white dark:bg-zinc-900">
+          <li key={s.name} className="rounded border p-4 bg-white">
             <div className="flex items-center justify-between">
               <span className="font-medium">{s.name}</span>
               <span className="text-xs text-zinc-500">Lv.{s.level}{s.years ? ` / ${s.years} yrs` : ""}</span>
             </div>
-            <div className="mt-2 h-2 w-full rounded bg-zinc-200 dark:bg-zinc-800">
+            <div className="mt-2 h-2 w-full rounded bg-zinc-200">
               <div
                 className="h-2 rounded bg-teal-500"
                 style={{ width: `${(Math.min(Math.max(s.level, 0), 5) / 5) * 100}%` }}

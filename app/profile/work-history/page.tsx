@@ -32,7 +32,7 @@ export default async function WorkHistoryPage() {
       <h1 className="mb-6 text-3xl font-bold">
         Work History
         <br />
-        <span className="text-sm">職務経歴</span>
+        <span className="text-sm">主な職務経歴</span>
       </h1>
       {items.length === 0 ? (
         <p className="text-zinc-500">職務経歴が登録されていません。microCMSで追加してください。</p>
