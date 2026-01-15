@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type Props = { postId: string };
 
@@ -15,6 +16,8 @@ export default function CommentForm({ postId }: Props) {
   const [status, setStatus] = useState<'idle'|'loading'|'success'|'error'>('idle');
   const [error, setError] = useState<string>('');
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const recaptchaV2Ref = useRef<ReCAPTCHA>(null);
+  const [showRecaptchaV2, setShowRecaptchaV2] = useState(false);
 
   useEffect(() => {
     if (!siteKey) return; // 未設定なら読み込みスキップ
@@ -51,6 +54,13 @@ export default function CommentForm({ postId }: Props) {
         body: JSON.stringify({ postId, name, email, message, recaptchaToken }),
       });
       const data = await res.json();
+      if (res.status === 400 && data.error === 'reCAPTCHA verification failed') {
+        // v3で失敗した場合、v2を表示して再試行
+        setShowRecaptchaV2(true);
+        setStatus('error');
+        setError('reCAPTCHAの確認が必要です。');
+        return;
+      }
       if (!res.ok || !data.ok) {
         throw new Error(data.error || '送信に失敗しました');
       }
@@ -74,6 +84,36 @@ export default function CommentForm({ postId }: Props) {
     }
   }
 
+  async function onRecaptchaV2Change(token: string | null) {
+    if (!token) return;
+    setStatus('loading');
+    setError('');
+    try {
+      // v2のトークンを使って再送信
+      const res = await fetch('/api/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postId, name, email, message, recaptchaToken: token }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || '送信に失敗しました');
+      }
+      // 成功時の処理
+      setShowRecaptchaV2(false);
+      setStatus('success');
+      setName('');
+      setEmail('');
+      setMessage('');
+      window.dispatchEvent(new CustomEvent('comments:updated', { detail: { id: data.id, deleteToken: data.deleteToken } }));
+    } catch (err: any) {
+      setStatus('error');
+      setError(err?.message || '送信に失敗しました');
+    } finally {
+      recaptchaV2Ref.current?.reset();
+    }
+  }
+
   return (
     <section>
       <h2 className="mb-4 text-xl font-semibold">コメント</h2>
@@ -92,6 +132,13 @@ export default function CommentForm({ postId }: Props) {
           <label className="block text-sm font-medium mb-1">メッセージ *</label>
           <textarea className="w-full rounded border p-2 bg-white" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} required />
         </div>
+        {showRecaptchaV2 && siteKey && (
+          <ReCAPTCHA
+            ref={recaptchaV2Ref}
+            sitekey={siteKey}
+            onChange={onRecaptchaV2Change}
+          />
+        )}
         <button disabled={status==='loading'} className="rounded bg-teal-600 text-white px-4 py-2 disabled:opacity-50">
           {status==='loading' ? '送信中…' : '送信'}
         </button>

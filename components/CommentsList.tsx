@@ -91,7 +91,7 @@ export default function CommentsList({ postId }: Props) {
                 <span className="font-medium">{c.name || '名無し'}</span>
                 <span className="text-xs text-zinc-500">{c.createdAt ? new Date(c.createdAt).toLocaleString() : ''}</span>
               </div>
-              <p className="mt-2 whitespace-pre-wrap break-words">{c.message}</p>
+              <p className="mt-2 whitespace-pre-wrap break-word">{c.message}</p>
               {hasDeleteToken(c.id) && (
                 <button onClick={() => onDelete(c.id)} className="mt-3 text-sm text-red-700 hover:underline">このコメントを削除</button>
               )}

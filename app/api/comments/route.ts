@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createComment, deleteComment, getCommentDetail, listComments } from "@/lib/comments";
+import { isSpam } from "@/lib/spam";
 
 export const runtime = "nodejs";
 
@@ -53,9 +54,23 @@ export async function POST(req: Request) {
     if (process.env.RECAPTCHA_DEBUG === "true") {
       console.log(`[reCAPTCHA] decision ok=${recaptcha.ok} score=${recaptcha.score} min=${minScore}`);
     }
-    if (!recaptcha.ok || recaptcha.score < minScore) {
+    if (!recaptcha.ok) {
       return NextResponse.json({ ok: false, error: "reCAPTCHA verification failed" }, { status: 400 });
     }
+    // v3のスコアが低い場合はv2のチャレンジを要求
+    if (recaptcha.score < minScore) {
+      // ただし、v2からのリクエスト（スコアがない）の場合はスコアチェックをスキップ
+      if (typeof recaptcha.score !== 'undefined') {
+        return NextResponse.json({ ok: false, error: "reCAPTCHA verification failed" }, { status: 400 });
+      }
+    }
+
+    // Spam check
+    const userAgent = req.headers.get("user-agent") || "";
+    if (await isSpam({ ip: ip || "", userAgent, name, email }, message)) {
+      return NextResponse.json({ ok: false, error: "Comment was detected as spam" }, { status: 400 });
+    }
+
 
     const created = await createComment({ postId, name, email, message });
     return NextResponse.json({ ok: true, id: created.id, deleteToken: created.deleteToken });
