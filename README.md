@@ -1,93 +1,4 @@
-This is a Next.js + microCMS blog project bootstrapped with create-next-app.
-
-## Setup
-
-1) Create microCMS Service and API Schema
-
-- Create a `blogs` API in microCMS
-	- Fields example: `title (Text)`, `body (Rich Text)`, `eyecatch (Image)`
-
-2) Environment Variables
-
-- Copy `.env.local.example` to `.env.local` and set values:
-
-```
-MICROCMS_SERVICE_DOMAIN=your-service
-MICROCMS_API_KEY=your-api-key
-RESEND_API_KEY=your-resend-key
-COMMENTS_TO_EMAIL=owner@example.com
-COMMENTS_FROM_EMAIL=onboarding@resend.dev
-```
-
-3) Install dependencies
-
-```bash
-npm install
-```
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-Homepage lists blogs from microCMS. Create contents in microCMS to see items.
-## Comments (Stored + reCAPTCHA)
-
-This project stores comments in microCMS and displays them on each blog page.
-
-- API: `/api/comments`
-	- `GET ?postId=...`: List comments
-	- `POST { postId, name?, email?, message, recaptchaToken }`: Create comment
-	- `DELETE { id, deleteToken }`: Delete own comment
-- UI:
-	- `CommentsList` shows existing comments and allows deletion if you have the delete token.
-	- `CommentForm` posts new comments and handles reCAPTCHA v3.
-
-Environment variables:
-
-```
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
-RECAPTCHA_SECRET_KEY=your-secret
-RECAPTCHA_MIN_SCORE=0.5
-RECAPTCHA_DEBUG=true
-MICROCMS_SERVICE_DOMAIN=your-service
-MICROCMS_API_KEY=read-api-key
-MICROCMS_WRITE_API_KEY=write-api-key
-```
-
-microCMS setup:
-- Create a `comments` API with fields: `postId (Text)`, `name (Text)`, `email (Text)`, `message (Text Area)`, `deleteToken (Text)`.
- - Enable Write API in microCMS and generate a Write-enabled API key.
- - Use `MICROCMS_API_KEY` for read operations and `MICROCMS_WRITE_API_KEY` for create/delete.
-
-Notes:
-- Delete is authorized by a random `deleteToken` stored only on the device used to post.
-- For better auth, integrate a user system or admin moderation as needed.
-- Adjust sensitivity via `RECAPTCHA_MIN_SCORE` (0.0–1.0, default 0.5). Higher blocks more likely bots; lower is more permissive.
-- Enable server-side logging with `RECAPTCHA_DEBUG=true` to print verification results (success, score, action, hostname, errors) in server logs.
-
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# This is a Next.js + microCMS blog project.
 
 ## Deploy on Vercel
 
@@ -95,8 +6,72 @@ Vercel: yukikim_v's projects (Hobby)
 
 https://my-test-blog-six.vercel.app/
 
-Blog title
-
-The Archive of Oblivion：「忘却の記録」
+Blog title: 忘却の記録 | The Archive of Oblivion
 
 忘却の記録 ｜ ポンコツウエットウエアの備忘録
+
+## 基本設計
+
+### 技術スタックとアーキテクチャ
+- フレームワーク: Next.js（App Router）+ React + TypeScript
+- ホスティング: Vercel（ISRによる再生成・`revalidate = 60`）
+- CMS: microCMS（JavaScript SDK による REST API 呼び出し）
+- スタイリング: Tailwind CSS
+- セキュリティ: sanitize-html による HTML サニタイズ、reCAPTCHA(v2)、Akismet によるコメントスパム対策
+- メール送信: Resend を利用したコメント通知
+- レンダリング: ISR（静的生成 + 60秒ごとの再生成）
+
+### データモデル（microCMS）
+- `blogs` エンドポイント
+	- 記事本体。タイトル・本文・アイキャッチ画像などを保持
+	- フロントエンドでは `types/post.ts` の `Post` 型で扱う
+- `categories` エンドポイント
+	- 記事カテゴリ。`Category` 型として扱い、一覧・詳細・記事フィルタに利用
+- `comments` エンドポイント
+	- 各記事へのコメントを保存。`postId`・`name`・`email`・`message`・`deleteToken` 等を保持
+	- Write API を用いてサーバー側 API 経由で作成／削除
+- `career` エンドポイント
+	- 職務経歴情報（期間・会社名・業種・主な業務・経験・その他）を保持し、プロフィール配下の Work History 画面で表示
+
+### 主なページとルーティング
+- `/` （ホーム）
+	- 最新のブログ記事一覧をカード形式で表示
+- `/blogs/[id]`
+	- 個別記事ページ
+	- microCMS から対象 ID の記事を取得し、リッチテキスト本文をサニタイズして描画
+	- 記事下部にコメント一覧（`CommentsList`）とコメント投稿フォーム（`CommentForm`）を表示
+- `/categories`
+	- カテゴリ一覧ページ。`categories` エンドポイントから取得したカテゴリを表示
+- `/categories/[id]`
+	- 指定カテゴリに紐づく記事一覧を表示
+- `/profile/work-history`
+	- `career` エンドポイントから職務経歴を取得し、期間・会社名・業種・主な業務・経験・その他をセクションごとに表示
+- `/rss.xml`・`/atom.xml`・`/sitemap.xml`
+	- ブログ記事やカテゴリ、トップページを対象とした RSS/Atom フィードとサイトマップを提供
+
+### データ取得と共通ユーティリティ
+- `lib/microcms.ts`
+	- 環境変数（`MICROCMS_SERVICE_DOMAIN`・`MICROCMS_API_KEY`）を zod で検証し、microCMS クライアントを生成
+	- `getList` / `getListDetail` を通じて各エンドポイントからデータ取得
+- `lib/sanitize.ts`
+	- `sanitize-html` を使い、許可されたタグ・属性のみを残して本文 HTML をサニタイズ
+- `lib/site.ts`
+	- `NEXT_PUBLIC_SITE_URL` などからサイトのベース URL を決定し、フィードやサイトマップ内の絶対 URL を生成
+
+### コメント機能の設計
+- API ルート: `/api/comments`
+	- `GET ?postId=...` で対象記事のコメント一覧を取得
+	- `POST` で reCAPTCHA v3 検証後、microCMS の `comments` に書き込み
+	- `DELETE` で `id` と `deleteToken` を検証して削除
+- フロントエンド:
+	- `CommentsList` がコメント一覧と削除操作を担当
+	- `CommentForm` が投稿フォームと reCAPTCHA トークン送信を担当
+
+### プレビューと運用
+- ドラフトプレビュー: microCMS の `draftKey` と Next.js の Draft Mode を組み合わせて下書き確認を実現
+	- `/api/preview?secret=PREVIEW_SECRET&redirect=/blogs/{id}?draftKey=...` 形式でプレビューを開始
+- 環境変数
+	- `MICROCMS_SERVICE_DOMAIN` / `MICROCMS_API_KEY` / `MICROCMS_WRITE_API_KEY`
+	- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` / `RECAPTCHA_SECRET_KEY` / `RESEND_API_KEY` などを Vercel 環境変数にも設定
+
+このセクションは、実装済みコードの構造を俯瞰するための高レベルな設計メモです。詳細な変更履歴や補足は `docs/project-summary.md` を参照してください。
