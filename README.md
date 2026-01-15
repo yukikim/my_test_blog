@@ -61,7 +61,7 @@ Blog title: 忘却の記録 | The Archive of Oblivion
 ### コメント機能の設計
 - API ルート: `/api/comments`
 	- `GET ?postId=...` で対象記事のコメント一覧を取得
-	- `POST` で reCAPTCHA v3 検証後、microCMS の `comments` に書き込み
+	- `POST` で reCAPTCHA v2 及びAkismet 検証後、microCMS の `comments` に書き込み
 	- `DELETE` で `id` と `deleteToken` を検証して削除
 - フロントエンド:
 	- `CommentsList` がコメント一覧と削除操作を担当
