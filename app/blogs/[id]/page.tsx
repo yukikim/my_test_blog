@@ -42,7 +42,6 @@ export default async function PostPage({ params, searchParams }:
   if (!id) return notFound();
 
   const post = await getPost(id, draftKey);
-  console.log("Fetched post:", post.tag);
   if (!post) return notFound();
 
   const candidates = ["content", "body", "text", "description", "richtext", "html"] as const;
