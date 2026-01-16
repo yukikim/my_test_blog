@@ -30,11 +30,11 @@ export default function RootLayout({
       >
         <header className="border-b bg-teal-50 text-teal-900">
           <nav className="mx-auto max-w-5xl p-4 flex gap-4">
-            <a href="/" className="font-semibold hover:underline">忘却の記録</a>
+            <a href="/" className="font-semibold hover:underline">忘却の記録 | The Archive of Oblivion</a>
+            <a href="/blogs" className="hover:underline">Post list</a>
             <a href="/categories" className="hover:underline">Categories</a>
             <a href="/profile" className="hover:underline">Profile</a>
             <a href="/profile/work-history" className="hover:underline">Work History</a>
-            <a href="/skills" className="hover:underline">Skills</a>
           </nav>
         </header>
         {children}

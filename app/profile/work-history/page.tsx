@@ -1,4 +1,5 @@
 import { microcmsClient } from "@/lib/microcms";
+import { sanitizeHTML } from "@/lib/sanitize";
 import type { Career } from "@/types/career";
 
 export const revalidate = 60;
@@ -14,14 +15,6 @@ async function getCareerItems(): Promise<Career[]> {
     console.error("Failed to fetch career items:", error);
     return [];
   }
-}
-
-function renderMultiline(text: string) {
-  return text.split(/\r?\n/).map((line, index) => (
-    <span key={`${index}-${line}`} className={index > 0 ? "block" : undefined}>
-      {line}
-    </span>
-  ));
 }
 
 export default async function WorkHistoryPage() {
@@ -64,9 +57,10 @@ export default async function WorkHistoryPage() {
                       <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
                         {row.label}
                       </dt>
-                      <dd className="mt-1 text-base">
-                        {renderMultiline(row.value)}
-                      </dd>
+                      <dd
+                        className="mt-1 text-base prose prose-sm max-w-none text-zinc-700"
+                        dangerouslySetInnerHTML={{ __html: sanitizeHTML(row.value) }}
+                      />
                     </div>
                   ))}
                 </dl>
