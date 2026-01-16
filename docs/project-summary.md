@@ -56,31 +56,63 @@
   - `MICROCMS_API_KEY=***`（機密のためVercelにも同値を設定）
 - 例ファイル: [.env.local.example](../.env.local.example)
 
+  ## 更新履歴（2026-01-16）
+  - **プロフィールページの静的化:** [app/profile/page.tsx](../app/profile/page.tsx) を microCMS 依存なしの静的コンテンツ＋`SkillMap` 表示に変更。
+  - **職務経歴のHTML対応:** [app/profile/work-history/page.tsx](../app/profile/work-history/page.tsx) で `career` の「主な業務」「経験」「その他」をサニタイズしたHTMLとして描画。
+  - **ブログ一覧ページ追加:** [app/blogs/page.tsx](../app/blogs/page.tsx) を追加し、`page` / `limit` クエリによるページングを実装。
+  - **タグ機能追加:** [types/tag.ts](../types/tag.ts) と `tags` エンドポイントを追加し、[components/TagList.tsx](../components/TagList.tsx), [app/tags/page.tsx](../app/tags/page.tsx), [app/tags/[id]/page.tsx](../app/tags/%5Bid%5D/page.tsx) を実装。
+  - **Post型のタグ配列対応:** [types/post.ts](../types/post.ts) で `tag` を複数参照（配列）に変更し、[components/PostCard.tsx](../components/PostCard.tsx) と [app/blogs/[id]/page.tsx](../app/blogs/%5Bid%5D/page.tsx) で複数タグ表示に対応。
+  - **README整理:** [README.md](../README.md) にタグ機能・ブログ一覧・プロフィール/職務経歴の仕様を追記。
+
 ## microCMS スキーマ
 - API: `blogs`
 - 推奨フィールド
   - `title`（Text）
   - `content`（Rich Text / HTML）
   - `eyecatch`（Image）
+  - `category`（Reference -> `categories`）
+  - `tag`（Reference（複数可）-> `tags`）
   - `publishedAt`（Date 任意）
+- API: `categories`
+  - `name`（Text）: カテゴリ名
+- API: `tags`
+  - `tag`（Text）: タグ名
+- API: `comments`
+  - `postId` / `name` / `email` / `message` / `deleteToken` など
+- API: `career`
+  - 期間 / 会社名 / 業種 / 主な業務 / 経験 / その他 など
 
 ## ルーティングとページ
 - ホーム: [app/page.tsx](../app/page.tsx)
   - `blogs`一覧を取得しカード表示。フェッチ失敗時は空配列で安全に表示。
+- ブログ一覧: [app/blogs/page.tsx](../app/blogs/page.tsx)
+  - `page` / `limit` クエリでページング可能なブログ一覧ページ（デフォルト9件/ページ）。
 - 詳細: [app/blogs/[id]/page.tsx](../app/blogs/%5Bid%5D/page.tsx)
   - `generateStaticParams()`でID一覧を取得（失敗時は空配列でビルド継続）。
   - Next.js 16 仕様に準拠し、`params` は `await` でアンラップして使用。
   - 本文は `content → body → text → description → richtext → html` の順で自動検出。
   - HTMLはサニタイズして描画（XSSなど対策）。
-- カード: [components/PostCard.tsx](../components/PostCard.tsx)
-  - 詳細リンクは `/blogs/{id}`。
+  - タイトル下にカテゴリとタグ（複数）へのリンクを表示。
+- カテゴリ一覧: [app/categories/page.tsx](../app/categories/page.tsx)
+  - `categories` エンドポイントからカテゴリ一覧を取得して表示。
+- カテゴリ詳細: [app/categories/[id]/page.tsx](../app/categories/%5Bid%5D/page.tsx)
+  - 指定カテゴリに紐づく記事一覧を表示。
+- タグ一覧: [app/tags/page.tsx](../app/tags/page.tsx)
+  - `tags` エンドポイントからタグ一覧を取得し、タグごとの記事数を表示。
+- タグ詳細: [app/tags/[id]/page.tsx](../app/tags/%5Bid%5D/page.tsx)
+  - 指定タグに紐づく記事一覧を表示。
+- プロフィール: [app/profile/page.tsx](../app/profile/page.tsx)
+  - プロフィール本文・基本情報・Skills（`SkillMap`）を静的に表示。
+- 職務経歴: [app/profile/work-history/page.tsx](../app/profile/work-history/page.tsx)
+  - `career` エンドポイントから職務経歴を取得し、「主な業務」「経験」「その他」は HTML サニタイズ後に描画。
 
 ## データ取得・クライアント
 - microCMSクライアント: [lib/microcms.ts](../lib/microcms.ts)
   - `MICROCMS_SERVICE_DOMAIN` と `MICROCMS_API_KEY` を zod で検証。
   - `createClient()` でSDKインスタンス生成。
 - 型: [types/post.ts](../types/post.ts)
-  - 動的フィールドに対応できるよう、インデックスシグネチャを許容。
+  - カテゴリ参照と複数タグ参照（配列）を持つ `Post` 型を定義し、動的フィールドに対応できるようインデックスシグネチャも許容。
+*** End Patch
 
 ## セキュリティ（サニタイズ）
 - サニタイズユーティリティ: [lib/sanitize.ts](../lib/sanitize.ts)
@@ -124,10 +156,9 @@ npm run build
 - 許可タグ・属性は要件に応じて拡張可能（`table`/`code`/`pre` など）。
 
 ## 次の拡張候補
-- カテゴリ/タグ一覧・絞り込み
-- RSS/サイトマップ生成（SEO）
-- 下書きプレビュー（プレビュートークン対応）
-- OG画像生成
+- 検索機能（キーワード検索・カテゴリ/タグ絞り込みのUI統合）
+- 関連記事表示（同カテゴリ・同タグベース）
+- OG画像生成（ブログ記事ごとの動的OG画像）
 
 ---
 ## カテゴリ一覧・詳細ページを追加

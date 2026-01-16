@@ -18,15 +18,17 @@ Blog title: 忘却の記録 | The Archive of Oblivion
 - CMS: microCMS（JavaScript SDK による REST API 呼び出し）
 - スタイリング: Tailwind CSS
 - セキュリティ: sanitize-html による HTML サニタイズ、reCAPTCHA(v2)、Akismet によるコメントスパム対策
-- メール送信: Resend を利用したコメント通知
 - レンダリング: ISR（静的生成 + 60秒ごとの再生成）
 
 ### データモデル（microCMS）
 - `blogs` エンドポイント
-	- 記事本体。タイトル・本文・アイキャッチ画像などを保持
+	- 記事本体。タイトル・本文・アイキャッチ画像、カテゴリ、タグなどを保持
+	- タグは `tags` エンドポイントへの**複数参照フィールド（配列）**として `tag` プロパティで取得
 	- フロントエンドでは `types/post.ts` の `Post` 型で扱う
 - `categories` エンドポイント
 	- 記事カテゴリ。`Category` 型として扱い、一覧・詳細・記事フィルタに利用
+- `tags` エンドポイント
+	- 記事タグ。`Tag` 型として扱い、タグ一覧・タグ別記事一覧・記事詳細／カード上のタグ表示に利用
 - `comments` エンドポイント
 	- 各記事へのコメントを保存。`postId`・`name`・`email`・`message`・`deleteToken` 等を保持
 	- Write API を用いてサーバー側 API 経由で作成／削除
@@ -36,14 +38,27 @@ Blog title: 忘却の記録 | The Archive of Oblivion
 ### 主なページとルーティング
 - `/` （ホーム）
 	- 最新のブログ記事一覧をカード形式で表示
+	- 記事カードには公開日・カテゴリ・タグ（複数）を表示
+- `/blogs`
+	- ブログ記事一覧の専用ページ
+	- `?page=1&limit=9` のようにクエリでページ番号と件数を指定可能（デフォルト 9 件 / ページ）
 - `/blogs/[id]`
 	- 個別記事ページ
 	- microCMS から対象 ID の記事を取得し、リッチテキスト本文をサニタイズして描画
+	- 見出し下にカテゴリとタグ（複数）を表示
 	- 記事下部にコメント一覧（`CommentsList`）とコメント投稿フォーム（`CommentForm`）を表示
+- `/blogs/[id]`
+	- draftKey 付きでアクセスした場合は microCMS の下書きプレビューにも対応
 - `/categories`
 	- カテゴリ一覧ページ。`categories` エンドポイントから取得したカテゴリを表示
 - `/categories/[id]`
 	- 指定カテゴリに紐づく記事一覧を表示
+- `/tags`
+	- タグ一覧ページ。`tags` エンドポイントから取得したタグと、タグごとの記事数を表示
+- `/tags/[id]`
+	- 指定タグに紐づく記事一覧を表示
+- `/profile`
+	- プロフィール本文・基本情報（氏名・拠点・メール）・Skills（`SkillMap` コンポーネント）を表示
 - `/profile/work-history`
 	- `career` エンドポイントから職務経歴を取得し、期間・会社名・業種・主な業務・経験・その他をセクションごとに表示
 - `/rss.xml`・`/atom.xml`・`/sitemap.xml`
