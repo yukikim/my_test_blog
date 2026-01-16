@@ -33,6 +33,7 @@ export default function RootLayout({
             <a href="/" className="font-semibold hover:underline">忘却の記録 | The Archive of Oblivion</a>
             <a href="/blogs" className="hover:underline">Post list</a>
             <a href="/categories" className="hover:underline">Categories</a>
+            <a href="/tags" className="hover:underline">Tags</a>
             <a href="/profile" className="hover:underline">Profile</a>
             <a href="/profile/work-history" className="hover:underline">Work History</a>
           </nav>

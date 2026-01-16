@@ -42,6 +42,7 @@ export default async function PostPage({ params, searchParams }:
   if (!id) return notFound();
 
   const post = await getPost(id, draftKey);
+  console.log("Fetched post:", post.tag);
   if (!post) return notFound();
 
   const candidates = ["content", "body", "text", "description", "richtext", "html"] as const;
@@ -57,13 +58,31 @@ export default async function PostPage({ params, searchParams }:
   return (
     <main className="mx-auto max-w-3xl p-6">
       <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
-      {post.category?.id && (
-        <div className="mb-4 text-sm">
-          <Link className="text-blue-600 hover:underline" href={`/categories/${post.category.id}`}>
-            #{post.category.name ?? "category"}
-          </Link>
-        </div>
-      )}
+      <div className="mb-4 space-y-2 text-sm">
+        {post.category?.id && (
+          <div>
+            <Link
+              className="text-blue-600 hover:underline"
+              href={`/categories/${post.category.id}`}
+            >
+              #{post.category.name ?? "category"}
+            </Link>
+          </div>
+        )}
+        {post.tag && post.tag.length > 0 && (
+          <div className="flex flex-wrap gap-2 text-xs">
+            {post.tag.map((t) => (
+              <Link
+                key={t.id}
+                className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 hover:bg-emerald-100"
+                href={`/tags/${t.id}`}
+              >
+                #{t.tag ?? "tag"}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
       {post.publishedAt && (
         <div className="mb-8 text-sm text-zinc-500">
           {new Date(post.publishedAt).toLocaleDateString()}

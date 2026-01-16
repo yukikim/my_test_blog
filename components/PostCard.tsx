@@ -24,6 +24,19 @@ export default function PostCard({ post }: { post: Post }) {
       <div className="text-sm text-zinc-500">
         {post.publishedAt && new Date(post.publishedAt).toLocaleDateString()}
       </div>
+      {post.tag && post.tag.length > 0 && (
+        <div className="mt-1 flex flex-wrap gap-1 text-xs">
+          {post.tag.map((t) => (
+            <Link
+              key={t.id}
+              href={`/tags/${t.id}`}
+              className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 hover:bg-emerald-100"
+            >
+              #{t.tag ?? "tag"}
+            </Link>
+          ))}
+        </div>
+      )}
     </article>
   );
 }

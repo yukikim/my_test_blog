@@ -15,7 +15,7 @@ async function getPosts(page: number, limit: number) {
       limit,
       offset,
       orders: "-publishedAt",
-      fields: "id,title,category,publishedAt,eyecatch,description",
+      fields: "id,title,category,tag,publishedAt,eyecatch,description",
     },
   });
   return data;

@@ -7,6 +7,10 @@ export type Post = {
     id: string;
     name?: string;
   } | null;
+  tag?: {
+    id: string;
+    tag?: string;
+  }[] | null;
   eyecatch?: {
     url: string;
     width: number;
