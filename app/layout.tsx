@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+//
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const notoSansJP = Noto_Sans_JP({
+  subsets: ['latin', 'japanese'],
+  weight: ['400', '700'],
+  variable: '--font-noto',
+  fallback: [
+    'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN',
+    'Meiryo',
+    'sans-serif'
+  ]
+})
+
 
 export const metadata: Metadata = {
   title: "忘却の記録",
@@ -26,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansJP.variable} antialiased`}
       >
         <header className="border-b bg-teal-50 text-teal-900">
           <nav className="mx-auto max-w-5xl p-4 flex gap-4">
