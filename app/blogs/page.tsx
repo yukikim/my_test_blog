@@ -2,8 +2,13 @@ import Link from "next/link";
 import { microcmsClient } from "@/lib/microcms";
 import type { Post } from "@/types/post";
 import PostList from "@/components/PostList";
+import type {Metadata} from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "忘却の記録 | Post List",
+};
 
 const DEFAULT_LIMIT = 9; // 1ページあたりの表示件数（任意に変更可）
 
