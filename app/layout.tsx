@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import NavBar from "@/components/NavBar";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin', 'japanese'],
@@ -15,8 +16,11 @@ const notoSansJP = Noto_Sans_JP({
   ]
 })
 
+// <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 export const metadata: Metadata = {
+  viewport: "width=device-width, initial-scale=1.0",
   title: "忘却の記録",
   description: "The Archive of Oblivion | ポンコツウエットウエアの備忘録",
 };
@@ -27,23 +31,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+      <html lang="ja">
       <body
-        className={`${notoSansJP.variable} antialiased`}
+          className={`${notoSansJP.variable} antialiased`}
       >
-        <header className="border-b bg-teal-50 text-teal-900">
-          <nav className="mx-auto max-w-5xl p-4 flex gap-4">
-            <a href="/" className="font-semibold hover:underline">忘却の記録 | The Archive of Oblivion</a>
-            <a href="/blogs" className="hover:underline">Post list</a>
-            <a href="/categories" className="hover:underline">Categories</a>
-            <a href="/tags" className="hover:underline">Tags</a>
-            <a href="/profile" className="hover:underline">Profile</a>
-            <a href="/profile/work-history" className="hover:underline">Work History</a>
-          </nav>
-        </header>
-        {children}
-        <SpeedInsights/>
+      <NavBar/>
+      {children}
+      <SpeedInsights/>
       </body>
-    </html>
+      </html>
   );
 }
