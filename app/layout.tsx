@@ -3,16 +3,6 @@ import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-//
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin', 'japanese'],
   weight: ['400', '700'],
