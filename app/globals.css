@@ -4,6 +4,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main-color-50: #f2f8ff;
+  --main-color-100: #e6f1ff;
+  --main-color-200: #bddbfc;
+  --main-color-300: #96c5fa;
+  --main-color-400: #4a9bf7;
+  --main-color-500: #0070f3;
+  --main-color-600: #0066db;
+  --main-color-700: #004491;
+  --main-color-800: #00336e;
+  --main-color-900: #00234a;
+  --main-color-950: #001124;
+}
+.main-dark {
+  background-color: var(--main-color-900);
 }
 
 @theme inline {
