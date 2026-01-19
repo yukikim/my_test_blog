@@ -38,7 +38,7 @@ export default function Example() {
     return (
         <Disclosure
             as="nav"
-            className="relative high-contrast after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10"
+            className="relative bg-yellow-950 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10 z-50"
         >
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
@@ -53,7 +53,7 @@ export default function Example() {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex shrink-0 items-center">
-                            <h1>忘却の記録</h1>
+                            <h1 className='font-tokumin text-gray-100'>忘却の記録</h1>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/footer";
 
 // const notoSansJP = Noto_Sans_JP({
 //   subsets: ['latin'],
@@ -35,8 +36,11 @@ export default function RootLayout({
           className="font-main"
       >
       <NavBar/>
+      <div className="min-h-[calc(100vh-140px)]">
       {children}
+      </div>
       <SpeedInsights/>
+      <Footer/>
       </body>
       </html>
   );

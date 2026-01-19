@@ -4,7 +4,7 @@ import type { Post } from "@/types/post";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <article className="rounded-lg border p-4 shadow-sm hover:shadow-md transition-shadow">
+    <article className="rounded-lg border border-gray-500 p-4 shadow-sm hover:shadow-md transition-shadow">
       {post.eyecatch?.url && (
         <div className="mb-3 overflow-hidden rounded-md">
           <Image
@@ -16,7 +16,7 @@ export default function PostCard({ post }: { post: Post }) {
           />
         </div>
       )}
-      <h3 className="text-lg font-semibold leading-tight mb-2">
+      <h3 className="text-lg font-semibold leading-tight mb-2 text-gray-200">
         <Link href={`/blogs/${post.id}`} className="hover:underline">
           {post.title}
         </Link>
