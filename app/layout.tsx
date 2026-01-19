@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
 
 const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin', 'japanese'],
+  subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-noto',
   fallback: [
