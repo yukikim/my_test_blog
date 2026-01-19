@@ -52,18 +52,11 @@ export default function RootLayout({
                         className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#a22c0c] to-[#89fcb7] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
                     />
                 </div>
-                <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-36">
+                {/* <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-36"> */}
+                <div className="mx-auto max-w-2xl py-4 sm:py-10 lg:py-12">
                         {/* コンテンツ */}
                           {children}
                         {/* コンテンツここまで */}
-                    {/* <div className="text-center">
-                        <h1 className="text-5xl font-tokumin tracking-tight text-balance text-white sm:text-7xl">
-                            忘却の記録<br /><span className="text-2xl tracking-normal">The Archive of Oblivion</span>
-                        </h1>
-                        <p className="mt-8 text-lg font-tokumin text-gray-400 sm:text-xl/8">
-                            ポンコツウエットウエアの備忘録としてのブログです。
-                        </p>
-                    </div> */}
                 </div>
                 <div
                     aria-hidden="true"
