@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+// import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
 
-const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-noto',
-  fallback: [
-    'Hiragino Sans',
-    'Hiragino Kaku Gothic ProN',
-    'Meiryo',
-    'sans-serif'
-  ]
-})
-
-// <meta name="viewport" content="width=device-width, initial-scale=1.0">
+// const notoSansJP = Noto_Sans_JP({
+//   subsets: ['latin'],
+//   weight: ['400', '700'],
+//   variable: '--font-noto',
+//   fallback: [
+//     'Hiragino Sans',
+//     'Hiragino Kaku Gothic ProN',
+//     'Meiryo',
+//     'sans-serif'
+//   ]
+// })
 
 
 export const metadata: Metadata = {
@@ -33,7 +31,8 @@ export default function RootLayout({
   return (
       <html lang="ja">
       <body
-          className={`${notoSansJP.variable} antialiased`}
+          // className={`${notoSansJP.variable} antialiased`}
+          className="font-main"
       >
       <NavBar/>
       {children}
