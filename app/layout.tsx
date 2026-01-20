@@ -5,19 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/footer";
 
-// const notoSansJP = Noto_Sans_JP({
-//   subsets: ['latin'],
-//   weight: ['400', '700'],
-//   variable: '--font-noto',
-//   fallback: [
-//     'Hiragino Sans',
-//     'Hiragino Kaku Gothic ProN',
-//     'Meiryo',
-//     'sans-serif'
-//   ]
-// })
-
-
 export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1.0",
   title: "忘却の記録",
@@ -32,14 +19,13 @@ export default function RootLayout({
   return (
       <html lang="ja">
       <body
-          // className={`${notoSansJP.variable} antialiased`}
           className="font-main"
       >
       <NavBar/>
       <div className="min-h-[calc(100vh-140px)] bg-[url('/images/background-img001.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
         <div className="bg-gray-900 opacity-95 min-h-[calc(100vh-140px)]">
 
-            <div className="relative isolate px-6 pt-14 lg:px-8">
+            <div className="relative isolate px-0 lg:px-8">
                 <div
                     aria-hidden="true"
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -52,8 +38,7 @@ export default function RootLayout({
                         className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#a22c0c] to-[#89fcb7] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
                     />
                 </div>
-                {/* <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-36"> */}
-                <div className="mx-auto max-w-2xl py-4 sm:py-10 lg:py-12">
+                <div className="mx-auto max-w-5xl sm:py-10 lg:py-12">
                         {/* コンテンツ */}
                           {children}
                         {/* コンテンツここまで */}

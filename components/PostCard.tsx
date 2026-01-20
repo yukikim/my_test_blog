@@ -1,10 +1,24 @@
+'use client';
 import Link from "next/link";
 import Image from "next/image";
 import type { Post } from "@/types/post";
+import { usePathname } from 'next/navigation'
+import path from "path";
+
 
 export default function PostCard({ post }: { post: Post }) {
+const pathname = usePathname()
+console.log('PostCard pathname:', pathname)
+// "/blogs/*" のみ true（"/blogs" は false）
+// 例: "/blogs/123" => true, "/blogs" => false
+const isBlogsWildcard = pathname.startsWith('/blogs/') && pathname.length > '/blogs/'.length;
+console.log('isBlogsPath:', isBlogsWildcard);
+const articleClassName = [
+  "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-4 shadow-sm hover:shadow-md transition-shadow",
+  isBlogsWildcard ? "w-full" : "lg:w-[calc(20%-1rem)] ",
+]
   return (
-    <article className="rounded-lg border border-gray-500 p-4 shadow-sm hover:shadow-md transition-shadow">
+    <article className={articleClassName.join(" ")}>
       {post.eyecatch?.url && (
         <div className="mb-3 overflow-hidden rounded-md">
           <Image

@@ -4,9 +4,10 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import Link from "next/link";
 
 const navigation = [
-    { name: 'home', href: '/' },
+    // { name: 'home', href: '/' },
     { name: 'Post list', href: '/blogs' },
     { name: 'Categories', href: '/categories' },
     { name: 'Tags', href: '/tags' },
@@ -53,7 +54,9 @@ export default function Example() {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex shrink-0 items-center">
-                            <h1 className='font-tokumin text-gray-100'>忘却の記録</h1>
+                            <h1 className='font-tokumin text-gray-100'>
+                                <Link href="/">忘却の記録</Link>
+                            </h1>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
@@ -79,15 +82,6 @@ export default function Example() {
                         </div>
                     </div>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                        {/*<button*/}
-                        {/*    type="button"*/}
-                        {/*    className="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"*/}
-                        {/*>*/}
-                        {/*    <span className="absolute -inset-1.5" />*/}
-                        {/*    <span className="sr-only">View notifications</span>*/}
-                        {/*    <BellIcon aria-hidden="true" className="size-6" />*/}
-                        {/*</button>*/}
-
                         {/* Profile dropdown */}
                         <Menu as="div" className="relative ml-3">
                             <MenuButton className="relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">

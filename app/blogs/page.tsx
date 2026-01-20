@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "忘却の記録 | Post List",
 };
 
-const DEFAULT_LIMIT = 9; // 1ページあたりの表示件数（任意に変更可）
+const DEFAULT_LIMIT = 10; // 1ページあたりの表示件数（任意に変更可）
 
 async function getPosts(page: number, limit: number) {
   const offset = (page - 1) * limit;
