@@ -8,6 +8,7 @@ import CommentForm from "@/components/CommentForm";
 import CommentsList from "@/components/CommentsList";
 import { TagIcon, CalendarIcon } from '@heroicons/react/24/outline'
 import PostList from "@/components/PostList";
+import TagList from "@/components/TagList";
 
 export const revalidate = 60;
 
@@ -121,14 +122,45 @@ export default async function PostPage({ params, searchParams }:
         <div className="mt-12">
           <CommentForm postId={post.id} />
         </div>
-        <div className="mt-12">
-          <CategoryList />
-        </div>
       </main>
       <menu className="bg-gray-600 p-6 text-gray-300 w-full lg:w-1/3">
-        <h2 className="mb-4 text-lg font-bold">関連記事</h2>
-        <p>test</p>
+        <h2 className="mb-4 text-lg font-bold">最新ポスト</h2>
         <PostList posts={posts} />
+        <div className="text-right">
+          <Link
+            href="/blogs"
+            className="bg-blue-500 hover:bg-blue-700 text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+            aria-label="blog list"
+          >
+            Blog List
+          </Link>
+        </div>
+        <div className="my-6">
+          <CategoryList />
+          <div className="text-right">
+            <Link
+              href="/categories"
+              className="bg-blue-500 hover:bg-blue-700 text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+              aria-label="category list"
+            >
+              Category List
+            </Link>
+
+          </div>
+        </div>
+        <div className="my-6">
+          <TagList />
+          <div className="text-right">
+            <Link
+              href="/tags"
+              className="bg-blue-500 hover:bg-blue-700 text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+              aria-label="tag list"
+            >
+              Tag List
+            </Link>
+
+          </div>
+        </div>
       </menu>
     </div>
   );

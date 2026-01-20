@@ -2,7 +2,7 @@ import Link from "next/link";
 import { microcmsClient } from "@/lib/microcms";
 import type { Post } from "@/types/post";
 import PostList from "@/components/PostList";
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "忘却の記録 | Post List",
 };
 
-const DEFAULT_LIMIT = 10; // 1ページあたりの表示件数（任意に変更可）
+const DEFAULT_LIMIT = 20; // 1ページあたりの表示件数（任意に変更可）
 
 async function getPosts(page: number, limit: number) {
   const offset = (page - 1) * limit;
@@ -48,9 +48,11 @@ export default async function BlogsPage({
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <h1 className="mb-6 text-3xl font-bold">ブログ一覧</h1>
+      <h1 className="mb-6 text-3xl font-bold text-gray-400">ポストリスト</h1>
 
-      <PostList posts={posts} />
+      <div className="text-left bg-gray-700 p-6 text-gray-300 lg:mt-20 rounded-lg">
+        <PostList posts={posts} />
+      </div>
 
       {totalPages > 1 && (
         <nav className="mt-8 flex items-center justify-center gap-4 text-sm">

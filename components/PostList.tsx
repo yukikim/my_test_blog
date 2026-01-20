@@ -8,7 +8,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
     );
   }
   return (
-    <div className="flex gap-[1rem] flex-wrap justify-around">
+    <div className="flex gap-[0.4rem] flex-wrap justify-around">
       {posts.map((p) => (
         <PostCard key={p.id} post={p} />)
       )}

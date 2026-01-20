@@ -14,7 +14,7 @@ console.log('PostCard pathname:', pathname)
 const isBlogsWildcard = pathname.startsWith('/blogs/') && pathname.length > '/blogs/'.length;
 console.log('isBlogsPath:', isBlogsWildcard);
 const articleClassName = [
-  "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-4 shadow-sm hover:shadow-md transition-shadow",
+  "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow bg-[#2c374d]",
   isBlogsWildcard ? "w-full" : "lg:w-[calc(20%-1rem)] ",
 ]
   return (
@@ -30,12 +30,13 @@ const articleClassName = [
           />
         </div>
       )}
-      <h3 className="text-lg font-semibold leading-tight mb-2 text-gray-200">
+      <h3 className="text-sm font-semibold leading-tight mb-2">
         <Link href={`/blogs/${post.id}`} className="hover:underline">
           {post.title}
         </Link>
       </h3>
-      <div className="text-sm text-zinc-500">
+      <div className="flex items-end flex-wrap justify-between gap-2">
+      <div className="text-sm">
         {post.publishedAt && new Date(post.publishedAt).toLocaleDateString()}
       </div>
       {post.tag && post.tag.length > 0 && (
@@ -51,6 +52,8 @@ const articleClassName = [
           ))}
         </div>
       )}
+
+      </div>
     </article>
   );
 }

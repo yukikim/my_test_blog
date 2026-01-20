@@ -59,14 +59,14 @@ export default async function CategoryList() {
     <section>
       <h2 className="mb-4 text-xl font-semibold">Categories</h2>
       {categories.length === 0 ? (
-        <p className="text-zinc-500">カテゴリがありません。microCMSで作成してください。</p>
+        <p className="">カテゴリがありません。microCMSで作成してください。</p>
       ) : (
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => (
-            <li key={c.id} className="rounded border p-4 bg-white">
+            <li key={c.id} className="rounded border p-4 bg-gray-800 text-gray-400">
               <Link href={`/categories/${c.id}`} className="hover:underline font-medium">
                 {c.name}
-                <span className="ml-2 text-sm text-zinc-500">({c.count})</span>
+                <span className="ml-2 text-sm">({c.count})</span>
               </Link>
             </li>
           ))}
