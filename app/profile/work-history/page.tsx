@@ -22,10 +22,10 @@ export default async function WorkHistoryPage() {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <h1 className="mb-6 text-3xl font-bold">
+      <h1 className="mb-6 text-3xl font-bold text-gray-300">
         Work History
         <br />
-        <span className="text-sm">主な職務経歴</span>
+        <span className="text-sm text-gray-400">主な職務経歴</span>
       </h1>
       {items.length === 0 ? (
         <p className="text-zinc-500">職務経歴が登録されていません。microCMSで追加してください。</p>
@@ -39,7 +39,7 @@ export default async function WorkHistoryPage() {
             ].filter((row): row is { label: string; value: string } => Boolean(row.value));
 
             return (
-              <li key={item.id} className="rounded border p-4 bg-white">
+              <li key={item.id} className="rounded border p-4 bg-gray-300">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
                     <h2 className="text-xl font-semibold">{item.company ?? "会社名未設定"}</h2>

@@ -3,7 +3,7 @@ import { microcmsClient } from "@/lib/microcms";
 import type { Post } from "@/types/post";
 import { sanitizeHTML } from "@/lib/sanitize";
 import Link from "next/link";
-import CategoryList from "@/components/CategoryList";
+import CategoryList from "@/components/CategoryListSide";
 import CommentForm from "@/components/CommentForm";
 import CommentsList from "@/components/CommentsList";
 import { TagIcon, CalendarIcon } from '@heroicons/react/24/outline'

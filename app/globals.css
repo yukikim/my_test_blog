@@ -36,3 +36,11 @@ body {
   color: var(--foreground);
   /* font-family: var(--font-noto), serif; */
 }
+
+main h3 {
+  background-color: #3f3f3f;
+  color:#ffffff !important;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.7rem;
+  display: inline-block;
+}
