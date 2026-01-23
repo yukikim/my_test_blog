@@ -21,7 +21,7 @@ export default function Footer() {
         </Link>
       </p>
       <p className="mb-2">
-        <Link href="https://github.com/yukikim/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://github.com/yukikim/my_test_blog" target="_blank" rel="noopener noreferrer">
           <Image src={'/images/GitHub_Invertocat_White.png'} alt="GitHub Icon" width={24} height={24} className="inline" />
         </Link>
       </p>
