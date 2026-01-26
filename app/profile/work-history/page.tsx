@@ -52,17 +52,23 @@ export default async function WorkHistoryPage() {
                   )}
                 </div>
                 <dl className="mt-3 space-y-3 text-zinc-700">
-                  {detailRows.map((row) => (
-                    <div key={row.label}>
-                      <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                        {row.label}
-                      </dt>
-                      <dd
-                        className="mt-1 text-base prose prose-sm max-w-none text-zinc-700"
-                        dangerouslySetInnerHTML={{ __html: sanitizeHTML(row.value) }}
-                      />
+                  <div className="lg:flex gap-4">
+                    <div className="lg:w-3/4 mb-4">
+                      <p className="text-sm mb-2 font-semibold uppercase tracking-wide text-zinc-800">{detailRows[0].label}</p>
+                      <div className="border-b pb-4 lg:border-0 text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHTML(detailRows[0].value) }}>
+                      </div>
                     </div>
-                  ))}
+                    <div className="bg-gray-200 lg:w-1/4 p-2 rounded mb-4">
+                      <p className="text-sm mb-2 font-semibold uppercase tracking-wide text-zinc-800">{detailRows[1].label}</p>
+                      <div className="text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHTML(detailRows[1].value) }}>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm mb-2 font-semibold uppercase tracking-wide text-zinc-800">{detailRows[2]?.label ? detailRows[2].label : ""}</p>
+                    <div className="text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHTML(detailRows[2]?.value ? detailRows[2].value : "") }}>
+                    </div>
+                  </div>
                 </dl>
               </li>
             );
