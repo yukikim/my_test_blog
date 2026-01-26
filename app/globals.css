@@ -8,8 +8,31 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-.main-dark {
-  background-color: var(--main-color-900);
+
+@layer components {
+  /* Tailwindのユーティリティを独自クラスにまとめる例 */
+  .content-frame {
+    @apply bg-sky-300;
+  }
+  .content-frame-in {
+    @apply bg-sky-950;
+  }
+  .back-coler {
+    @apply bg-gray-700/45;
+  }
+  .head-text-color {
+    @apply text-white ;
+  }
+  .sub-text-color {
+    @apply text-gray-300 ;
+  }
+  .main-text-color {
+    @apply text-zinc-100 ;
+  }
+
+  .page-bg {
+    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
+  }
 }
 
 @theme inline {

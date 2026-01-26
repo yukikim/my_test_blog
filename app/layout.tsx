@@ -23,7 +23,7 @@ export default function RootLayout({
       >
       <NavBar/>
       <div className="min-h-[calc(100vh-140px)] bg-[url('/images/background-img001.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
-        <div className="bg-gray-900 opacity-95 min-h-[calc(100vh-140px)]">
+        <div className="back-coler min-h-[calc(100vh-140px)]">
 
             <div className="relative isolate px-0 lg:px-8">
                 <div

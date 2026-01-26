@@ -16,7 +16,7 @@ export default function PostCard({ post }: { post: Post }) {
   // 例: "/blogs/123" => true, "/blogs" => false
   const isBlogsWildcard = pathname.startsWith('/blogs/') && pathname.length > '/blogs/'.length;
   const articleClassName = [
-    "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow bg-[#2c374d]",
+    "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow content-frame-in",
     isBlogsWildcard ? "w-full" : "lg:w-[calc(20%-1rem)] ",
   ]
   return (
