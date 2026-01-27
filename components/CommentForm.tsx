@@ -65,21 +65,21 @@ export default function CommentForm({ postId }: Props) {
 
   return (
     <section>
-      <h2 className="mb-4 text-xl font-semibold">コメント</h2>
-      <form onSubmit={onSubmit} className="space-y-4">
+      <h2 className="mb-4 text-sm font-semibold">コメント</h2>
+      <form onSubmit={onSubmit} className="space-y-4 text-sm">
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="block text-sm font-medium mb-1">お名前 (任意)</label>
-            <input className="w-full rounded border p-2 bg-white" value={name} onChange={(e) => setName(e.target.value)} />
+            <label className="block font-medium mb-1">お名前 (任意)</label>
+            <input className="w-full rounded p-2 bg-white" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">メール (任意)</label>
-            <input type="email" className="w-full rounded border p-2 bg-white" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label className="block font-medium mb-1">メール (任意)</label>
+            <input type="email" className="w-full rounded p-2 bg-white" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">メッセージ *</label>
-          <textarea className="w-full rounded border p-2 bg-white" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} required />
+          <label className="block font-medium mb-1">メッセージ *</label>
+          <textarea className="w-full rounded p-2 bg-white" rows={5} value={message} onChange={(e) => setMessage(e.target.value)} required />
         </div>
         
         {siteKey && (

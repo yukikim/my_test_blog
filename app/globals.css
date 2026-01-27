@@ -12,19 +12,31 @@
 @layer components {
   /* Tailwindのユーティリティを独自クラスにまとめる例 */
   .content-frame {
-    @apply bg-sky-300;
+    @apply bg-slate-500/45;
   }
   .content-frame-in {
-    @apply bg-sky-950;
+    @apply bg-slate-500/75;
+  }
+  .content-back {
+    @apply bg-slate-50/70;
+  }
+  .content-in-back {
+    @apply bg-slate-100/50;
   }
   .back-coler {
-    @apply bg-gray-700/45;
+    @apply bg-slate-700/75;
+  }
+  .heaer-bg-color {
+    @apply bg-slate-800;
+  }
+  .footer-bg-color {
+    @apply bg-slate-400;
   }
   .head-text-color {
-    @apply text-white ;
+    @apply text-stone-300 ;
   }
   .sub-text-color {
-    @apply text-gray-300 ;
+    @apply text-stone-400 ;
   }
   .main-text-color {
     @apply text-zinc-100 ;

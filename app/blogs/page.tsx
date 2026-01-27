@@ -48,9 +48,9 @@ export default async function BlogsPage({
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <h1 className="mb-6 text-3xl font-bold text-gray-400">ポストリスト</h1>
+      <h1 className="mb-6 text-2xl font-bold main-text-color">ポストリスト</h1>
 
-      <div className="text-left bg-gray-700 p-6 text-gray-300 lg:mt-20 rounded-lg">
+      <div className="text-left content-frame p-2 lg:p-4 text-gray-300 lg:mt-20 rounded-lg">
         <PostList posts={posts} />
       </div>
 

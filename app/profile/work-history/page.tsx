@@ -39,7 +39,7 @@ export default async function WorkHistoryPage() {
             ].filter((row): row is { label: string; value: string } => Boolean(row.value));
 
             return (
-              <li key={item.id} className="rounded border p-4 bg-gray-300">
+              <li key={item.id} className="rounded border p-4 content-back">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
                     <h2 className="text-xl font-semibold">{item.company ?? "会社名未設定"}</h2>
@@ -58,7 +58,7 @@ export default async function WorkHistoryPage() {
                       <div className="border-b pb-4 lg:border-0 text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHTML(detailRows[0].value) }}>
                       </div>
                     </div>
-                    <div className="bg-gray-200 lg:w-1/4 p-2 rounded mb-4">
+                    <div className="content-in-back lg:w-1/4 p-2 rounded mb-4">
                       <p className="text-sm mb-2 font-semibold uppercase tracking-wide text-zinc-800">{detailRows[1].label}</p>
                       <div className="text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHTML(detailRows[1].value) }}>
                       </div>

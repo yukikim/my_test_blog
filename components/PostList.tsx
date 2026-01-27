@@ -16,7 +16,7 @@ export default function PostList({
     );
   }
   return (
-    <div className="flex gap-1 flex-wrap">
+    <div className="lg:flex gap-1 flex-wrap">
       {posts.map((p) => (
         <PostCard key={p.id} post={p} variant={variant} />)
       )}

@@ -69,7 +69,7 @@ export default async function PostPage({ params, searchParams }:
   return (
     <div className="flex flex-wrap">
 
-      <main className="p-6 bg-gray-100 opacity-60 w-full lg:w-2/3">
+      <main className="p-6 content-back w-full lg:w-2/3">
 
         <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
 
@@ -123,7 +123,7 @@ export default async function PostPage({ params, searchParams }:
           <CommentForm postId={post.id} />
         </div>
       </main>
-      <menu className="bg-gray-600 p-6 text-gray-300 w-full lg:w-1/3">
+      <menu className="content-frame p-6 text-gray-300 w-full lg:w-1/3">
         <h2 className="mb-4 text-lg font-bold">最新ポスト</h2>
         <PostList posts={posts} variant="full" />
         <div className="text-right">

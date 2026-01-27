@@ -53,7 +53,7 @@ export default async function TagDetail({ params }: { params: Promise<{ id: stri
   return (
     <main className="mx-auto max-w-5xl p-6">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Tag: {tag.tag}</h1>
+        <h1 className="text-2xl font-bold main-text-color">Tag: {tag.tag}</h1>
         <Link href="/tags" className="text-sm text-zinc-600 hover:underline">
           ← タグ一覧へ
         </Link>

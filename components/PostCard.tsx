@@ -17,10 +17,10 @@ export default function PostCard({
   variant?: PostCardVariant;
 }) {
   const widthClass =
-    variant === "full" ? "w-full" : "w-[calc(50%-1rem)] lg:w-[calc(20%-1rem)]";
+    variant === "full" ? "w-full" : "lg:w-[calc(26.3%-1rem)]";
   const articleClassName = [
     widthClass,
-    "rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow content-frame-in",
+    "rounded-lg border border-gray-500 p-2 mb-2 lg:mb-0 content-frame-in",
   ]
   return (
     <article className={articleClassName.join(" ")}>

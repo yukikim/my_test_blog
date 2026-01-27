@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function Footer() {
   return (
-    <footer className="bg-gray-500 px-4 py-6 text-center text-sm text-gray-200">
+    <footer className="footer-bg-color px-4 py-6 text-center text-sm text-gray-200">
       <p className="text-xs mb-2">
         <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
           <Image src={'/images/nextjs-logotype-dark-background.png'} alt="Next.js Icon" width={60} height={60} className="inline" />

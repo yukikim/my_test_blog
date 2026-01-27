@@ -80,13 +80,13 @@ export default function CommentsList({ postId }: Props) {
 
   return (
     <section className='border-b border-teal-700 pb-4'>
-      <h2 className="mb-4 text-xl font-semibold">コメント一覧</h2>
+      <h2 className="mb-4 text-sm font-semibold">コメント一覧</h2>
       {items.length === 0 ? (
         <p className="text-zinc-500">コメントはまだありません。</p>
       ) : (
         <ul className="space-y-4">
           {items.map((c) => (
-            <li key={c.id} className="rounded border p-4 bg-white">
+            <li key={c.id} className="rounded text-sm p-4 bg-white">
               <div className="flex items-baseline justify-between gap-4">
                 <span className="font-medium">{c.name || '名無し'}</span>
                 <span className="text-xs text-zinc-500">{c.createdAt ? new Date(c.createdAt).toLocaleString() : ''}</span>
