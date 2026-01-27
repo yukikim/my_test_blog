@@ -125,7 +125,7 @@ export default async function PostPage({ params, searchParams }:
       </main>
       <menu className="bg-gray-600 p-6 text-gray-300 w-full lg:w-1/3">
         <h2 className="mb-4 text-lg font-bold">最新ポスト</h2>
-        <PostList posts={posts} />
+        <PostList posts={posts} variant="full" />
         <div className="text-right">
           <Link
             href="/blogs"

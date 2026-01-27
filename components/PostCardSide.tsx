@@ -1,26 +1,26 @@
+// 'use client';
 import Link from "next/link";
 import Image from "next/image";
 import type { Post } from "@/types/post";
+// import { usePathname } from 'next/navigation'
 
-type PostCardVariant = "grid" | "full";
 
 function formatDateYYYYMMDDSLash(iso: string) {
   // Hydration mismatch対策: SSR/CSRで同一結果になるようロケールとタイムゾーンを固定
   return new Date(iso).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' });
 }
 
-export default function PostCard({
-  post,
-  variant = "grid",
-}: {
-  post: Post;
-  variant?: PostCardVariant;
-}) {
-  const widthClass =
-    variant === "full" ? "w-full" : "w-[calc(50%-1rem)] lg:w-[calc(20%-1rem)]";
+export default function PostCard({ post }: { post: Post }) {
+  // const pathname = usePathname()
+  // "/blogs/*" のみ true（"/blogs" は false）
+  // 例: "/blogs/123" => true, "/blogs" => false
+  // const isBlogsWildcard = pathname.startsWith('/blogs/') && pathname.length > '/blogs/'.length;
+  // const articleClassName = [
+  //   "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow content-frame-in",
+  //   isBlogsWildcard ? "w-full" : "lg:w-[calc(20%-1rem)] ",
+  // ]
   const articleClassName = [
-    widthClass,
-    "rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow content-frame-in",
+    "w-[calc(50%-1rem)] rounded-lg border border-gray-500 p-2 shadow-sm hover:shadow-md transition-shadow content-frame-in w-full"
   ]
   return (
     <article className={articleClassName.join(" ")}>
