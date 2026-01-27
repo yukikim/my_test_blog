@@ -7,44 +7,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
 
-@layer components {
-  /* Tailwindのユーティリティを独自クラスにまとめる例 */
-  .content-frame {
-    @apply bg-slate-500/45;
-  }
-  .content-frame-in {
-    @apply bg-slate-500/75;
-  }
-  .content-back {
-    @apply bg-slate-50/70;
-  }
-  .content-in-back {
-    @apply bg-slate-100/50;
-  }
-  .back-coler {
-    @apply bg-slate-700/75;
-  }
-  .heaer-bg-color {
-    @apply bg-slate-800;
-  }
-  .footer-bg-color {
-    @apply bg-slate-400;
-  }
-  .head-text-color {
-    @apply text-stone-300 ;
-  }
-  .sub-text-color {
-    @apply text-stone-400 ;
-  }
-  .main-text-color {
-    @apply text-zinc-100 ;
-  }
-
-  .page-bg {
-    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
-  }
 }
 
 @theme inline {
@@ -52,10 +15,70 @@
   --color-foreground: var(--foreground);
   --font-noto: var(--font-noto);
   --color-hight-contrast: #000000;
-  --font-main: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;;
+  --font-main: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
   --font-tokumin: "Kaisei Tokumin", serif;
   --font-mochiy: "Mochiy Pop One", sans-serif;
+  --color-venice-blue-50: #f1f8fe;
+  --color-venice-blue-100: #e1f1fd;
+  --color-venice-blue-200: #bde2fa;
+  --color-venice-blue-300: #82ccf7;
+  --color-venice-blue-400: #40b3f0;
+  --color-venice-blue-500: #179ae0;
+  --color-venice-blue-600: #0a7abf;
+  --color-venice-blue-700: #095d94;
+  --color-venice-blue-800: #0c5280;
+  --color-venice-blue-900: #10456a;
+  --color-venice-blue-950: #0b2c46;
 }
+
+@layer components {
+
+  /* Tailwindのユーティリティを独自クラスにまとめる例 */
+  .content-frame {
+    @apply bg-slate-500/45;
+  }
+
+  .content-frame-in {
+    @apply bg-slate-500/75;
+  }
+
+  .content-back {
+    @apply bg-slate-50/70;
+  }
+
+  .content-in-back {
+    @apply bg-slate-100/50;
+  }
+
+  .back-coler {
+    @apply bg-slate-700/75;
+  }
+
+  .heaer-bg-color {
+    @apply bg-slate-800;
+  }
+
+  .footer-bg-color {
+    @apply bg-slate-400;
+  }
+
+  .head-text-color {
+    @apply text-stone-300;
+  }
+
+  .sub-text-color {
+    @apply text-stone-400;
+  }
+
+  .main-text-color {
+    @apply text-zinc-100;
+  }
+
+  .page-bg {
+    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
+  }
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -74,7 +97,7 @@ body {
 
 main h3 {
   background-color: #3f3f3f;
-  color:#ffffff !important;
+  color: #ffffff !important;
   margin-bottom: 1rem;
   padding: 0.2rem 0.7rem;
   display: inline-block;

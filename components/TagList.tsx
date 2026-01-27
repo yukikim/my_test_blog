@@ -65,10 +65,10 @@ export default async function TagList() {
             <li key={t.id}>
               <Link
                 href={`/tags/${t.id}`}
-                className="inline-flex items-center rounded-full border px-3 py-1 text-xs content-frame-in text-gray-400 hover:bg-zinc-100"
+                className="inline-flex items-center rounded-full border px-3 py-1 text-xs content-frame-in text-gray-300 hover:bg-zinc-500"
               >
                 <span className="mr-1">#{t.tag ?? "tag"}</span>
-                <span className="text-zinc-400">({t.count})</span>
+                <span className="text-zinc-200">({t.count})</span>
               </Link>
             </li>
           ))}
