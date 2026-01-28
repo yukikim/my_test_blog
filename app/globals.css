@@ -29,31 +29,6 @@
 
 }
 
-/* Color Theme Swatches in Hex */
-.New-Beginnings-1-hex { color: #41592F; }
-.New-Beginnings-2-hex { color: #58733D; }
-.New-Beginnings-3-hex { color: #252617; }
-.New-Beginnings-4-hex { color: #F2F2F2; }
-.New-Beginnings-5-hex { color: #D9AA8F; }
-
-.New-Beginnings-light-text { color: #d6d6d6; }
-.New-Beginnings-dark-text { color: #302f2e; }
-
-/* Color Theme Swatches in RGBA */
-.New-Beginnings-1-rgba { color: rgba(64, 89, 47, 1); }
-.New-Beginnings-2-rgba { color: rgba(87, 114, 60, 1); }
-.New-Beginnings-3-rgba { color: rgba(36, 38, 23, 1); }
-.New-Beginnings-4-rgba { color: rgba(242, 242, 242, 1); }
-.New-Beginnings-5-rgba { color: rgba(216, 170, 143, 1); }
-
-/* Color Theme Swatches in HSLA */
-.New-Beginnings-1-hsla { color: hsla(95, 30, 26, 1); }
-.New-Beginnings-2-hsla { color: hsla(90, 30, 34, 1); }
-.New-Beginnings-3-hsla { color: hsla(67, 24, 12, 1); }
-.New-Beginnings-4-hsla { color: hsla(0, 0, 95, 1); }
-.New-Beginnings-5-hsla { color: hsla(22, 49, 70, 1); }
-
-
 @layer components {
 
   /* Tailwindのユーティリティを独自クラスにまとめる例 */
@@ -95,6 +70,12 @@
 
   .main-text-color {
     @apply text-zinc-200;
+  }
+  .light-text-color {
+    @apply text-theme-light-text;
+  }
+  .dark-text-color {
+    @apply text-theme-dark-text;
   }
 
   .page-bg {
