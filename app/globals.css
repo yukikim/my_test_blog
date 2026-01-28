@@ -5,30 +5,24 @@
 /* @plugin "@tailwindcss/typography"; */
 
 :root {
+  /* ブラウザのデフォルトテーマ設定に従う */
   --background: #ffffff;
   --foreground: #171717;
 
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-noto: var(--font-noto);
-  --color-hight-contrast: #000000;
   --font-main: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
   --font-tokumin: "Kaisei Tokumin", serif;
   --font-mochiy: "Mochiy Pop One", sans-serif;
-  --color-venice-blue-50: #f1f8fe;
-  --color-venice-blue-100: #e1f1fd;
-  --color-venice-blue-200: #bde2fa;
-  --color-venice-blue-300: #82ccf7;
-  --color-venice-blue-400: #40b3f0;
-  --color-venice-blue-500: #179ae0;
-  --color-venice-blue-600: #0a7abf;
-  --color-venice-blue-700: #095d94;
-  --color-venice-blue-800: #0c5280;
-  --color-venice-blue-900: #10456a;
-  --color-venice-blue-950: #0b2c46;
+
+  --color-theme-primary: #590212;
+  --color-theme-light: #818c83;
+  --color-theme-dark: #a68c6d;
+  --color-theme-secondary: #734e46;
+  --color-theme-accent: #0D0000;
+
+  --color-theme-content: #c9decd;
 
 
 }
@@ -37,39 +31,39 @@
 
   /* Tailwindのユーティリティを独自クラスにまとめる例 */
   .content-frame {
-    @apply bg-slate-500/45;
+    @apply bg-theme-primary/75;
   }
 
   .content-frame-in {
-    @apply bg-slate-500/75;
+    @apply bg-theme-dark/90;
   }
 
   .content-back {
-    @apply bg-slate-50/70;
+    @apply bg-theme-content/90;
   }
 
   .content-in-back {
-    @apply bg-slate-100/50;
+    @apply bg-theme-dark/50;
   }
 
-  .back-coler {
-    @apply bg-slate-700/75;
+  .back-color {
+    @apply bg-theme-secondary/60;
   }
 
   .heaer-bg-color {
-    @apply bg-slate-800;
+    @apply bg-theme-primary;
   }
 
   .footer-bg-color {
-    @apply bg-slate-400;
+    @apply bg-theme-secondary;
   }
 
   .head-text-color {
-    @apply text-stone-300;
+    @apply text-stone-200;
   }
 
   .sub-text-color {
-    @apply text-stone-400;
+    @apply text-stone-300;
   }
 
   .main-text-color {
@@ -94,6 +88,7 @@
 
 
 @media (prefers-color-scheme: dark) {
+  /* ブラウザのデフォルトテーマ設定に従う */
   :root {
     /* --background: #303030;
     --foreground: #ededed; */
@@ -103,6 +98,7 @@
 }
 
 body {
+  /* ブラウザのデフォルトテーマ設定に従う */
   background: var(--background);
   color: var(--foreground);
   /* font-family: var(--font-noto), serif; */
@@ -115,3 +111,46 @@ main h3 {
   padding: 0.2rem 0.7rem;
   display: inline-block;
 }
+
+/* Color Theme Swatches in Hex */
+.Glyphic-Biotechnologies-1-hex { color: #0A0D0C; }
+.Glyphic-Biotechnologies-2-hex { color: #818C89; }
+.Glyphic-Biotechnologies-3-hex { color: #465946; }
+.Glyphic-Biotechnologies-4-hex { color: #758C65; }
+.Glyphic-Biotechnologies-5-hex { color: #B1BFA3; }
+
+/* Color Theme Swatches in RGBA */
+.Glyphic-Biotechnologies-1-rgba { color: rgba(9, 12, 12, 1); }
+.Glyphic-Biotechnologies-2-rgba { color: rgba(129, 140, 137, 1); }
+.Glyphic-Biotechnologies-3-rgba { color: rgba(70, 89, 69, 1); }
+.Glyphic-Biotechnologies-4-rgba { color: rgba(117, 140, 100, 1); }
+.Glyphic-Biotechnologies-5-rgba { color: rgba(176, 191, 162, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Glyphic-Biotechnologies-1-hsla { color: hsla(174, 12, 4, 1); }
+.Glyphic-Biotechnologies-2-hsla { color: hsla(163, 4, 52, 1); }
+.Glyphic-Biotechnologies-3-hsla { color: hsla(118, 12, 31, 1); }
+.Glyphic-Biotechnologies-4-hsla { color: hsla(95, 16, 47, 1); }
+.Glyphic-Biotechnologies-5-hsla { color: hsla(89, 18, 69, 1); }
+
+
+/* Color Theme Swatches in Hex */
+.Intrinsic-grey-1-hex { color: #590212; }
+.Intrinsic-grey-2-hex { color: #c9decd; }
+.Intrinsic-grey-3-hex { color: #A68C6D; }
+.Intrinsic-grey-4-hex { color: #734E46; }
+.Intrinsic-grey-5-hex { color: #0D0000; }
+
+/* Color Theme Swatches in RGBA */
+.Intrinsic-grey-1-rgba { color: rgba(89, 1, 17, 1); }
+.Intrinsic-grey-2-rgba { color: rgba(129, 140, 130, 1); }
+.Intrinsic-grey-3-rgba { color: rgba(165, 140, 109, 1); }
+.Intrinsic-grey-4-rgba { color: rgba(114, 78, 69, 1); }
+.Intrinsic-grey-5-rgba { color: rgba(12, 0, 0, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Intrinsic-grey-1-hsla { color: hsla(348, 96, 17, 1); }
+.Intrinsic-grey-2-hsla { color: hsla(129, 4, 52, 1); }
+.Intrinsic-grey-3-hsla { color: hsla(33, 23, 53, 1); }
+.Intrinsic-grey-4-hsla { color: hsla(11, 24, 36, 1); }
+.Intrinsic-grey-5-hsla { color: hsla(0, 96, 2, 1); }

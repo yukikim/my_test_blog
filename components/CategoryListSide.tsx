@@ -63,7 +63,7 @@ export default async function CategoryList() {
       ) : (
         <ul className="">
           {categories.map((c) => (
-            <li key={c.id} className="rounded border p-4 content-frame-in text-gray-400 mb-1">
+            <li key={c.id} className="rounded p-4 content-frame-in text-zinc-200 mb-1">
               <Link href={`/categories/${c.id}`} className="hover:underline font-medium">
                 {c.name}
                 <span className="ml-2 text-sm">({c.count})</span>

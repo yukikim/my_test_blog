@@ -20,7 +20,7 @@ export default function PostCard({
     variant === "full" ? "w-full" : "lg:w-[calc(26.3%-1rem)]";
   const articleClassName = [
     widthClass,
-    "rounded-lg border border-gray-500 p-2 mb-2 lg:mb-0 content-frame-in",
+    "rounded-lg p-2 mb-2 lg:mb-0 content-frame-in",
   ]
   return (
     <article className={articleClassName.join(" ")}>
@@ -50,7 +50,7 @@ export default function PostCard({
               <Link
                 key={t.id}
                 href={`/tags/${t.id}`}
-                className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 hover:bg-emerald-100"
+                className="rounded-full bg-theme-secondary px-2 py-0.5 text-zinc-100 hover:bg-theme-dark"
               >
                 #{t.tag ?? "tag"}
               </Link>

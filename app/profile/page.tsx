@@ -36,7 +36,7 @@ export default async function ProfilePage() {
           <div className="lg:w-2/3">
             <article className="prose max-w-none text-gray-200 mb-6">
 
-              <div className="content-in-back p-4 text-gray-800 rounded-2xl mb-4">
+              <div className="content-back p-4 text-gray-800 rounded-2xl mb-4">
                 <h2 className="text-sm lg:text-xl font-semibold mb-2">デザインから開発まで、ものづくりをトータルに楽しむ</h2>
                 <p className="mb-4 text-sm">
                   私はこれまで、DTPデザインからWeb制作、そしてシステム構築まで、デジタルの領域を幅広く歩んできました。<br />
@@ -50,7 +50,7 @@ export default async function ProfilePage() {
                 </p>
               </div>
 
-              <div className="rounded-xl border border-gray-600 p-4 bg-gray-700 text-gray-300">
+              <div className="rounded-xl p-4 content-frame text-gray-300">
                 <h2 className="mb-2 font-semibold">基本情報</h2>
                 <ul className="space-y-1 text-sm text-zinc-100">
                   <li>氏名: 木村孝幸(Takayuki Kimura)</li>
@@ -113,7 +113,7 @@ export default async function ProfilePage() {
             <div className="flex justify-end">
               <Link
                 href="/profile/work-history"
-                className="bg-blue-500 hover:bg-blue-700 text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center"
+                className="bg-theme-primary hover:bg-theme-dark text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center"
                 aria-label="Work History"
               >
                 Work History

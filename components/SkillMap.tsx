@@ -32,17 +32,17 @@ const defaultSkills: Skill[] = [
 export default function SkillMap({ title = "Skills", skills = defaultSkills }: Props) {
   return (
     <section>
-      <h2 className="mb-4 text-xl font-semibold text-gray-300">{title}<br /><span className="text-sm text-gray-400">習得したスキル(習得度は大凡の値です)</span></h2>
+      <h2 className="mb-4 text-xl font-semibold text-gray-300">{title}<br /><span className="text-sm font-normal text-gray-300">習得したスキル(習得度は大凡の値です)</span></h2>
       <ul className="space-y-3">
         {skills.map((s) => (
-          <li key={s.name} className="rounded border p-2 bg-gray-300 mb-1">
+          <li key={s.name} className="rounded p-2 content-frame-in mb-1">
             <div className="flex items-center justify-between">
               <span className="font-medium text-sm">{s.name}</span>
-              <span className="text-xs text-zinc-500">Lv.{s.level}{s.years ? ` / ${s.years} yrs` : ""}</span>
+              <span className="text-xs text-zinc-900">Lv.{s.level}{s.years ? ` / ${s.years} yrs` : ""}</span>
             </div>
             <div className="mt-1 h-2 w-full rounded bg-zinc-200">
               <div
-                className="h-2 rounded bg-sky-700/70"
+                className="h-2 rounded bg-theme-primary/70"
                 style={{ width: `${(Math.min(Math.max(s.level, 0), 10) / 10) * 100}%` }}
               />
             </div>

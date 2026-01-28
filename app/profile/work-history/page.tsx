@@ -25,7 +25,7 @@ export default async function WorkHistoryPage() {
       <h1 className="mb-6 text-3xl font-bold text-gray-300">
         Work History
         <br />
-        <span className="text-sm text-gray-400">主な職務経歴</span>
+        <span className="text-sm text-zinc-200">主な職務経歴</span>
       </h1>
       {items.length === 0 ? (
         <p className="text-zinc-500">職務経歴が登録されていません。microCMSで追加してください。</p>
@@ -39,19 +39,19 @@ export default async function WorkHistoryPage() {
             ].filter((row): row is { label: string; value: string } => Boolean(row.value));
 
             return (
-              <li key={item.id} className="rounded border p-4 content-back">
+              <li key={item.id} className="rounded p-4 content-back">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                   <div>
                     <h2 className="text-xl font-semibold">{item.company ?? "会社名未設定"}</h2>
                     {item.industry && (
-                      <p className="text-sm text-zinc-500">{item.industry}</p>
+                      <p className="text-sm text-zinc-700">{item.industry}</p>
                     )}
                   </div>
                   {item.period && (
-                    <span className="text-sm text-zinc-500">{item.period}</span>
+                    <span className="text-sm text-zinc-700">{item.period}</span>
                   )}
                 </div>
-                <dl className="mt-3 space-y-3 text-zinc-700">
+                <dl className="mt-3 space-y-3 text-zinc-800">
                   <div className="lg:flex gap-4">
                     <div className="lg:w-3/4 mb-4">
                       <p className="text-sm mb-2 font-semibold uppercase tracking-wide text-zinc-800">{detailRows[0].label}</p>

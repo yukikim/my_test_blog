@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import NavBar from "@/components/NavBar";
@@ -24,7 +23,7 @@ export default function RootLayout({
       <NavBar/>
       <div className="min-h-[calc(100vh-140px)] bg-[url('/images/background-img001.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
         {/* <div className="back-coler min-h-[calc(100vh-140px)]"> */}
-        <div className="paper-background min-h-[calc(100vh-140px)]">
+        <div className="back-color min-h-[calc(100vh-140px)]">
 
             <div className="relative isolate px-0 lg:px-8">
                 <div

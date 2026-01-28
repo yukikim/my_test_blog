@@ -82,7 +82,7 @@ export default function CommentsList({ postId }: Props) {
     <section className='border-b border-teal-700 pb-4'>
       <h2 className="mb-4 text-sm font-semibold">コメント一覧</h2>
       {items.length === 0 ? (
-        <p className="text-zinc-500">コメントはまだありません。</p>
+        <p className="text-zinc-600">コメントはまだありません。</p>
       ) : (
         <ul className="space-y-4">
           {items.map((c) => (
