@@ -16,16 +16,24 @@
   --font-tokumin: "Kaisei Tokumin", serif;
   --font-mochiy: "Mochiy Pop One", sans-serif;
 
-  --color-theme-primary: #590212;
-  --color-theme-light: #818c83;
-  --color-theme-dark: #a68c6d;
-  --color-theme-secondary: #734e46;
-  --color-theme-accent: #0D0000;
+  --color-theme-primary: #465946;
+  --color-theme-light: #B1BFA3;
+  --color-theme-dark: #758C65;
+  --color-theme-secondary: #818C89;
+  --color-theme-accent: #0A0D0C;
 
-  --color-theme-content: #c9decd;
+  --color-theme-content: #B1BFA3;
 
 
 }
+/* Color Theme Swatches in Hex */
+.Glyphic-theme-accent { color: #0A0D0C; }
+.Glyphic-theme-secondary { color: #818C89; }
+.Glyphic-theme-primary { color: #465946; }
+.Glyphic-theme-dark { color: #758C65; }
+.Glyphic-theme-light { color: #B1BFA3; }
+
+.Glyphic-content { color: #B1BFA3; }
 
 @layer components {
 
@@ -67,7 +75,7 @@
   }
 
   .main-text-color {
-    @apply text-zinc-100;
+    @apply text-zinc-200;
   }
 
   .page-bg {
@@ -111,46 +119,3 @@ main h3 {
   padding: 0.2rem 0.7rem;
   display: inline-block;
 }
-
-/* Color Theme Swatches in Hex */
-.Glyphic-Biotechnologies-1-hex { color: #0A0D0C; }
-.Glyphic-Biotechnologies-2-hex { color: #818C89; }
-.Glyphic-Biotechnologies-3-hex { color: #465946; }
-.Glyphic-Biotechnologies-4-hex { color: #758C65; }
-.Glyphic-Biotechnologies-5-hex { color: #B1BFA3; }
-
-/* Color Theme Swatches in RGBA */
-.Glyphic-Biotechnologies-1-rgba { color: rgba(9, 12, 12, 1); }
-.Glyphic-Biotechnologies-2-rgba { color: rgba(129, 140, 137, 1); }
-.Glyphic-Biotechnologies-3-rgba { color: rgba(70, 89, 69, 1); }
-.Glyphic-Biotechnologies-4-rgba { color: rgba(117, 140, 100, 1); }
-.Glyphic-Biotechnologies-5-rgba { color: rgba(176, 191, 162, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Glyphic-Biotechnologies-1-hsla { color: hsla(174, 12, 4, 1); }
-.Glyphic-Biotechnologies-2-hsla { color: hsla(163, 4, 52, 1); }
-.Glyphic-Biotechnologies-3-hsla { color: hsla(118, 12, 31, 1); }
-.Glyphic-Biotechnologies-4-hsla { color: hsla(95, 16, 47, 1); }
-.Glyphic-Biotechnologies-5-hsla { color: hsla(89, 18, 69, 1); }
-
-
-/* Color Theme Swatches in Hex */
-.Intrinsic-grey-1-hex { color: #590212; }
-.Intrinsic-grey-2-hex { color: #c9decd; }
-.Intrinsic-grey-3-hex { color: #A68C6D; }
-.Intrinsic-grey-4-hex { color: #734E46; }
-.Intrinsic-grey-5-hex { color: #0D0000; }
-
-/* Color Theme Swatches in RGBA */
-.Intrinsic-grey-1-rgba { color: rgba(89, 1, 17, 1); }
-.Intrinsic-grey-2-rgba { color: rgba(129, 140, 130, 1); }
-.Intrinsic-grey-3-rgba { color: rgba(165, 140, 109, 1); }
-.Intrinsic-grey-4-rgba { color: rgba(114, 78, 69, 1); }
-.Intrinsic-grey-5-rgba { color: rgba(12, 0, 0, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Intrinsic-grey-1-hsla { color: hsla(348, 96, 17, 1); }
-.Intrinsic-grey-2-hsla { color: hsla(129, 4, 52, 1); }
-.Intrinsic-grey-3-hsla { color: hsla(33, 23, 53, 1); }
-.Intrinsic-grey-4-hsla { color: hsla(11, 24, 36, 1); }
-.Intrinsic-grey-5-hsla { color: hsla(0, 96, 2, 1); }

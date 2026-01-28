@@ -22,7 +22,7 @@ export default async function WorkHistoryPage() {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      <h1 className="mb-6 text-3xl font-bold text-gray-300">
+      <h1 className="mb-6 text-3xl font-bold main-text-color">
         Work History
         <br />
         <span className="text-sm text-zinc-200">主な職務経歴</span>

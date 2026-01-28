@@ -7,9 +7,9 @@ export default async function ProfilePage() {
   return (
     <main className="mx-auto max-w-5xl p-6">
       <div className="lg:flex justify-between gap-1 mb-4">
-        <h1 className="mb-4 text-3xl font-bold text-gray-400">
+        <h1 className="mb-4 text-3xl font-bold main-text-color">
           Profile
-          <span className="text-sm ml-4 text-gray-300">プロフィール</span>
+          <span className="text-sm ml-4 main-text-color">プロフィール</span>
         </h1>
         {/* <Link
           href="/profile/work-history"
@@ -22,7 +22,7 @@ export default async function ProfilePage() {
       <section className="space-y-8">
         <div className="relative h-56 lg:h-160 w-full overflow-hidden rounded-lg bg-zinc-100 sm:h-64 lg:mb-10">
           <Image
-            src="/images/my_personal_image5.jpg"
+            src="/images/my_personal_image8.jpg"
             alt="profile image"
             fill
             sizes="(max-width: 640px) 100vw, 1024px"

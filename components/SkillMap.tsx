@@ -42,7 +42,7 @@ export default function SkillMap({ title = "Skills", skills = defaultSkills }: P
             </div>
             <div className="mt-1 h-2 w-full rounded bg-zinc-200">
               <div
-                className="h-2 rounded bg-theme-primary/70"
+                className="h-2 rounded bg-theme-primary"
                 style={{ width: `${(Math.min(Math.max(s.level, 0), 10) / 10) * 100}%` }}
               />
             </div>
