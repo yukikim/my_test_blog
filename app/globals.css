@@ -29,6 +29,8 @@
   --color-venice-blue-800: #0c5280;
   --color-venice-blue-900: #10456a;
   --color-venice-blue-950: #0b2c46;
+
+
 }
 
 @layer components {
@@ -77,6 +79,17 @@
   .page-bg {
     @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
   }
+
+.paper-background {
+  background-color: #7b776bc6; /* 紙のベース色 */
+  background-image: 
+    linear-gradient(90deg, transparent 50%, rgba(0,0,0,0.05) 50%), /* ノイズ的な模様 */
+    linear-gradient(rgba(0,0,0,0.05) 2px, transparent 2px); /* ほのかな繊維の質感 */
+  background-size: 6px 6px; /* テクスチャの細かさ */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* 紙の立体感 */
+}
+
+
 }
 
 
