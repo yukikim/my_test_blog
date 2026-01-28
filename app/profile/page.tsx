@@ -35,13 +35,21 @@ export default async function ProfilePage() {
 
           <div className="lg:w-2/3">
             <article className="prose max-w-none text-gray-200 mb-6">
-              <p className="mb-4">私はこれまで、デザインからウェブ開発、システム構築まで幅広く経験を積んできました。</p>
-              <p className="mb-4">DTP業務を通じてビジュアルデザイン、illustrator、photoshop使用経験やWebサイト制作、WordPress構築、Webアプリケーション、API開発やLINEアプリ制作に携わり、<br />
-                サーバー設定からアプリ設計・実装まで一貫して担当した経験を通して、<br />
-                Linux、PHP、Javascript、Node、ReactやTypescriptなどの知識、Webデザイン、バックエンドおよびフロントエンドの理解を有しています。<br />
-                フロントエンド開発とWebデザインを得意としています。<br />
-                要件定義、外部設計等の上流工程よりもメンバーとして実装作業を好みます。</p>
-              <p className="mb-4">コンピューターはデザイン事務所での経験とDTP業務で使用していた経験からメインマシンはMacです。</p>
+
+              <div className="content-in-back p-4 text-gray-800 rounded-2xl">
+                <h2 className="text-xl font-semibold mb-2">デザインから開発まで、ものづくりをトータルに楽しむ</h2>
+                <p className="mb-4">
+                  私はこれまで、DTPデザインからWeb制作、そしてシステム構築まで、デジタルの領域を幅広く歩んできました。<br />
+                  IllustratorやPhotoshopを手にデザインに没頭した日々から始まり、現在はReactやTypeScript、Node.jsなどを用いたモダンなWeb開発をメインに活動しています。<br />
+                  サーバー設定からアプリの実装まで一貫して携わってきた経験があるため、<br />
+                  <strong>「デザインの意図を汲み取ったスムーズな実装」</strong>には特に自信があります。<br />
+                  なかでも、ユーザーが直接触れる「フロントエンド開発」と「Webデザイン」が大好きです。<br />
+                  設計図を描くよりも、実際に手を動かして形にしていく「実装作業」にやりがいを感じます。<br />
+                  ちなみに、デザイン事務所時代からの相棒であるMacが私のメインマシンです。<br />
+                  クリエイティブな視点とエンジニアの視点、その両方を大切にしながら、使い心地の良いものをお届けしたいと思っています。
+                </p>
+              </div>
+
               <div className="my-4 p-4 bg-neutral-700 rounded-2xl text-sm">
                 <p className="mb-4">
                   このサイトは、私の個人開発プロジェクトとして制作した「技術メモ兼ポートフォリオ」ブログです。<br />
