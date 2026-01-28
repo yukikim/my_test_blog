@@ -16,24 +16,43 @@
   --font-tokumin: "Kaisei Tokumin", serif;
   --font-mochiy: "Mochiy Pop One", sans-serif;
 
-  --color-theme-primary: #465946;
-  --color-theme-light: #B1BFA3;
-  --color-theme-dark: #758C65;
-  --color-theme-secondary: #818C89;
-  --color-theme-accent: #0A0D0C;
+  --color-theme-primary: #41592F;
+  --color-theme-secondary: #758C65;
+  --color-theme-dark: #252617;
+  --color-theme-light: #F2F2F2;
+  --color-theme-accent: #D9AA8F;
 
-  --color-theme-content: #B1BFA3;
+  --color-theme-content: #F2F2F2;
+  --color-theme-light-text: #d6d6d6;
+  --color-theme-dark-text: #302f2e;
 
 
 }
-/* Color Theme Swatches in Hex */
-.Glyphic-theme-accent { color: #0A0D0C; }
-.Glyphic-theme-secondary { color: #818C89; }
-.Glyphic-theme-primary { color: #465946; }
-.Glyphic-theme-dark { color: #758C65; }
-.Glyphic-theme-light { color: #B1BFA3; }
 
-.Glyphic-content { color: #B1BFA3; }
+/* Color Theme Swatches in Hex */
+.New-Beginnings-1-hex { color: #41592F; }
+.New-Beginnings-2-hex { color: #58733D; }
+.New-Beginnings-3-hex { color: #252617; }
+.New-Beginnings-4-hex { color: #F2F2F2; }
+.New-Beginnings-5-hex { color: #D9AA8F; }
+
+.New-Beginnings-light-text { color: #d6d6d6; }
+.New-Beginnings-dark-text { color: #302f2e; }
+
+/* Color Theme Swatches in RGBA */
+.New-Beginnings-1-rgba { color: rgba(64, 89, 47, 1); }
+.New-Beginnings-2-rgba { color: rgba(87, 114, 60, 1); }
+.New-Beginnings-3-rgba { color: rgba(36, 38, 23, 1); }
+.New-Beginnings-4-rgba { color: rgba(242, 242, 242, 1); }
+.New-Beginnings-5-rgba { color: rgba(216, 170, 143, 1); }
+
+/* Color Theme Swatches in HSLA */
+.New-Beginnings-1-hsla { color: hsla(95, 30, 26, 1); }
+.New-Beginnings-2-hsla { color: hsla(90, 30, 34, 1); }
+.New-Beginnings-3-hsla { color: hsla(67, 24, 12, 1); }
+.New-Beginnings-4-hsla { color: hsla(0, 0, 95, 1); }
+.New-Beginnings-5-hsla { color: hsla(22, 49, 70, 1); }
+
 
 @layer components {
 
@@ -43,7 +62,7 @@
   }
 
   .content-frame-in {
-    @apply bg-theme-dark/90;
+    @apply bg-theme-dark/80;
   }
 
   .content-back {
@@ -55,7 +74,7 @@
   }
 
   .back-color {
-    @apply bg-theme-secondary/60;
+    @apply bg-theme-secondary/30;
   }
 
   .heaer-bg-color {
@@ -113,8 +132,8 @@ body {
 }
 
 main h3 {
-  background-color: #3f3f3f;
-  color: #ffffff !important;
+  background-color: #D9AA8F;
+  color: #252617 !important;
   margin-bottom: 1rem;
   padding: 0.2rem 0.7rem;
   display: inline-block;

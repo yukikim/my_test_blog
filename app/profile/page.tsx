@@ -113,7 +113,7 @@ export default async function ProfilePage() {
             <div className="flex justify-end">
               <Link
                 href="/profile/work-history"
-                className="bg-theme-primary hover:bg-theme-dark text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center"
+                className="bg-theme-accent hover:bg-theme-secondary text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center"
                 aria-label="Work History"
               >
                 Work History
