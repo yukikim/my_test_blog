@@ -22,7 +22,7 @@ export default async function ProfilePage() {
       <section className="space-y-8">
         <div className="relative h-56 lg:h-160 w-full overflow-hidden rounded-lg bg-zinc-100 sm:h-64 lg:mb-10">
           <Image
-            src="/images/my_personal_image8.jpg"
+            src="/images/my_personal_image4.jpg"
             alt="profile image"
             fill
             sizes="(max-width: 640px) 100vw, 1024px"

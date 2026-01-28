@@ -73,7 +73,7 @@ export default async function PostPage({ params, searchParams }:
 
         <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
 
-        <div className="flex justify-between border-b border-teal-700 border-dotted pb-1 mb-6">
+        <div className="flex justify-between border-b border-theme-primary border-dotted pb-1 mb-6">
           {/* カテゴリー・タグ */}
           <div className="space-y-2 text-sm flex justify-end items-center gap-4">
             {post.category?.id && (
@@ -91,7 +91,7 @@ export default async function PostPage({ params, searchParams }:
                 {post.tag.map((t) => (
                   <Link
                     key={t.id}
-                    className="rounded-full bg-theme-secondary px-2 py-0.5 text-zinc-100 hover:bg-theme-dark"
+                    className="rounded-full bg-theme-accent px-2 py-0.5 text-zinc-700 hover:bg-theme-light"
                     href={`/tags/${t.id}`}
                   >
                     <TagIcon className="inline-block w-4 h-4 mr-1" />{t.tag ?? "tag"}
@@ -110,7 +110,7 @@ export default async function PostPage({ params, searchParams }:
 
         {html ? (
           <article
-            className="prose text-zinc-800 space-y-4 border-b border-teal-700 pb-4"
+            className="prose text-zinc-800 space-y-4 border-b border-theme-primary pb-4"
             dangerouslySetInnerHTML={{ __html: safe }}
           />
         ) : (
@@ -129,7 +129,7 @@ export default async function PostPage({ params, searchParams }:
         <div className="text-right">
           <Link
             href="/blogs"
-            className="bg-theme-primary hover:bg-theme-dark text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+            className="bg-theme-accent hover:bg-theme-light text-zinc-500 text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
             aria-label="blog list"
           >
             Blog List
@@ -140,7 +140,7 @@ export default async function PostPage({ params, searchParams }:
           <div className="text-right">
             <Link
               href="/categories"
-              className="bg-theme-primary hover:bg-theme-dark text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+              className="bg-theme-accent hover:bg-theme-light text-zinc-500 text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
               aria-label="category list"
             >
               Category List
@@ -153,7 +153,7 @@ export default async function PostPage({ params, searchParams }:
           <div className="text-right">
             <Link
               href="/tags"
-              className="bg-theme-primary hover:bg-theme-dark text-white text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+              className="bg-theme-accent hover:bg-theme-light text-zinc-500 text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
               aria-label="tag list"
             >
               Tag List

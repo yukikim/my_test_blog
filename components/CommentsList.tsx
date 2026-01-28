@@ -79,7 +79,7 @@ export default function CommentsList({ postId }: Props) {
   if (error) return <p className="text-red-700">{error}</p>;
 
   return (
-    <section className='border-b border-teal-700 pb-4'>
+    <section className='border-b border-theme-primary pb-4'>
       <h2 className="mb-4 text-sm font-semibold">コメント一覧</h2>
       {items.length === 0 ? (
         <p className="text-zinc-600">コメントはまだありません。</p>

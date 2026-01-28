@@ -50,7 +50,7 @@ export default function PostCard({
               <Link
                 key={t.id}
                 href={`/tags/${t.id}`}
-                className="rounded-full bg-theme-secondary px-2 py-0.5 text-zinc-100 hover:bg-theme-dark"
+                className="rounded-full bg-theme-accent px-2 py-0.5 text-zinc-500 hover:bg-theme-light"
               >
                 #{t.tag ?? "tag"}
               </Link>

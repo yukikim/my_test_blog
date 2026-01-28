@@ -16,18 +16,27 @@
   --font-tokumin: "Kaisei Tokumin", serif;
   --font-mochiy: "Mochiy Pop One", sans-serif;
 
-  --color-theme-primary: #41592F;
-  --color-theme-secondary: #758C65;
-  --color-theme-dark: #252617;
-  --color-theme-light: #F2F2F2;
-  --color-theme-accent: #D9AA8F;
+  --color-theme-primary: #D9738E;
+  --color-theme-secondary: #BF8A8E;
+  --color-theme-dark: #55333c;
+  --color-theme-light: #F2D3AC;
+  --color-theme-accent: #C4E1F2;
 
   --color-theme-content: #F2F2F2;
   --color-theme-light-text: #d6d6d6;
   --color-theme-dark-text: #302f2e;
 
+  --color-theme-inside-frame-text: #302f2e;
+
 
 }
+/* Color Theme Swatches in Hex */
+.陽光桜の花-1-hex { color: #BF8A8E; }
+.陽光桜の花-2-hex { color: #D9738E; }
+.陽光桜の花-3-hex { color: #F2C2CF; }
+.陽光桜の花-4-hex { color: #C4E1F2; }
+.陽光桜の花-5-hex { color: #F2D3AC; }
+.陽光桜の花-3-hex { color: #55333c; }
 
 @layer components {
 
@@ -38,6 +47,10 @@
 
   .content-frame-in {
     @apply bg-theme-dark/80;
+  }
+
+  .frame-in-text {
+    @apply text-theme-dark-text;
   }
 
   .content-back {
