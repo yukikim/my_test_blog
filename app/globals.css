@@ -16,11 +16,11 @@
   --font-tokumin: "Kaisei Tokumin", serif;
   --font-mochiy: "Mochiy Pop One", sans-serif;
 
-  --color-theme-primary: #D9738E;
-  --color-theme-secondary: #BF8A8E;
-  --color-theme-dark: #55333c;
-  --color-theme-light: #F2D3AC;
-  --color-theme-accent: #C4E1F2;
+  --color-theme-primary: #243340;
+  --color-theme-secondary: #314259;
+  --color-theme-dark: #4F758C;
+  --color-theme-light: #8EACBF;
+  --color-theme-accent: #A69485;
 
   --color-theme-content: #F2F2F2;
   --color-theme-light-text: #d6d6d6;
@@ -31,12 +31,11 @@
 
 }
 /* Color Theme Swatches in Hex */
-.陽光桜の花-1-hex { color: #BF8A8E; }
-.陽光桜の花-2-hex { color: #D9738E; }
-.陽光桜の花-3-hex { color: #F2C2CF; }
-.陽光桜の花-4-hex { color: #C4E1F2; }
-.陽光桜の花-5-hex { color: #F2D3AC; }
-.陽光桜の花-3-hex { color: #55333c; }
+.-ILLUSION--1-hex { color: #314259; }
+.-ILLUSION--2-hex { color: #243340; }
+.-ILLUSION--3-hex { color: #4F758C; }
+.-ILLUSION--4-hex { color: #8EACBF; }
+.-ILLUSION--5-hex { color: #A69485; }
 
 @layer components {
 
@@ -126,8 +125,9 @@ body {
 }
 
 main h3 {
-  background-color: #D9AA8F;
-  color: #252617 !important;
+  background-color: var(--color-theme-primary);
+  /* color: #252617 !important; */
+  color: var(--color-theme-light-text) !important;
   margin-bottom: 1rem;
   padding: 0.2rem 0.7rem;
   display: inline-block;

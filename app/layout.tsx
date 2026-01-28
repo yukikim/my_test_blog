@@ -21,7 +21,7 @@ export default function RootLayout({
           className="font-main"
       >
       <NavBar/>
-      <div className="min-h-[calc(100vh-140px)] bg-[url('/images/background-img001.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
+      <div className="min-h-[calc(100vh-140px)] bg-[url('/images/background-img003.jpg')] bg-cover bg-fixed bg-position-[center_top] bg-no-repeat">
         {/* <div className="back-coler min-h-[calc(100vh-140px)]"> */}
         <div className="back-color min-h-[calc(100vh-140px)]">
 

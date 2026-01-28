@@ -129,7 +129,7 @@ export default async function PostPage({ params, searchParams }:
         <div className="text-right">
           <Link
             href="/blogs"
-            className="bg-theme-accent hover:bg-theme-light text-zinc-500 text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+            className="bg-theme-accent hover:bg-theme-light light-text-color text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
             aria-label="blog list"
           >
             Blog List
@@ -140,7 +140,7 @@ export default async function PostPage({ params, searchParams }:
           <div className="text-right">
             <Link
               href="/categories"
-              className="bg-theme-accent hover:bg-theme-light text-zinc-500 text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+              className="bg-theme-accent hover:bg-theme-light light-text-color text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
               aria-label="category list"
             >
               Category List
@@ -153,7 +153,7 @@ export default async function PostPage({ params, searchParams }:
           <div className="text-right">
             <Link
               href="/tags"
-              className="bg-theme-accent hover:bg-theme-light text-zinc-500 text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
+              className="bg-theme-accent hover:bg-theme-light light-text-color text4xl font-bold py-auto px-4 rounded h-8 inline-flex items-center mt-4"
               aria-label="tag list"
             >
               Tag List
