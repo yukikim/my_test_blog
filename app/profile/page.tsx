@@ -39,12 +39,15 @@ export default async function ProfilePage() {
               <div className="content-back p-4 text-gray-800 rounded-2xl mb-4">
                 <h2 className="text-sm lg:text-xl font-semibold mb-2">デザインから開発まで、ものづくりをトータルに楽しむ</h2>
                 <p className="mb-4 text-sm">
-                  私はこれまで、DTPデザインからWeb制作、そしてシステム構築まで、デジタルの領域を幅広く歩んできました。<br />
-                  IllustratorやPhotoshopを手にデザインに没頭した日々から始まり、現在はReactやTypeScript、Node.jsなどを用いたモダンなWeb開発をメインに活動しています。<br />
+                  私はこれまで、DTPデザインからWeb制作、そしてシステム構築まで、デジタルの領域を幅広く歩んできました。</p>
+                <p className="mb-4 text-sm">
+                  IllustratorやPhotoshopを手にデザインに没頭した日々から始まり、現在はReactやTypeScript、Node.jsなどを用いたモダンなWeb開発をメインに活動しています。</p>
+                <p className="mb-4 text-sm">
                   サーバー設定からアプリの実装まで一貫して携わってきた経験があるため、<br />
                   <strong>「デザインの意図を汲み取ったスムーズな実装」</strong>には特に自信があります。<br />
                   なかでも、ユーザーが直接触れる「フロントエンド開発」と「Webデザイン」が大好きです。<br />
-                  設計図を描くよりも、実際に手を動かして形にしていく「実装作業」にやりがいを感じます。<br />
+                  設計図を描くよりも、実際に手を動かして形にしていく「実装作業」にやりがいを感じます。</p>
+                <p className="mb-4 text-sm">
                   ちなみに、デザイン事務所時代からの相棒であるMacが私のメインマシンです。<br />
                   クリエイティブな視点とエンジニアの視点、その両方を大切にしながら、使い心地の良いものをお届けしたいと思っています。
                 </p>
