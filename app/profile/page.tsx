@@ -51,11 +51,12 @@ export default async function ProfilePage() {
               </div>
 
               <div className="rounded-xl p-4 content-frame text-gray-300">
-                <h2 className="mb-2 font-semibold">基本情報</h2>
+                <h2 className="mb-2 font-semibold">basic information</h2>
                 <ul className="space-y-1 text-sm text-zinc-100">
-                  <li>氏名: 木村孝幸(Takayuki Kimura)</li>
-                  <li>拠点: 東京都荒川区</li>
-                  <li>メール: tki6ra@icloud.com</li>
+                  <li>Identity // Takayuki Kimura</li>
+                  <li>Vintage // 1962</li>
+                  <li>Base // Tokyo, JP</li>
+                  <li>Email // tki6ra@icloud.com</li>
                 </ul>
               </div>
 

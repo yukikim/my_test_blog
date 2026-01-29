@@ -41,7 +41,7 @@
 
   /* Tailwindのユーティリティを独自クラスにまとめる例 */
   .content-frame {
-    @apply bg-theme-primary/75;
+    @apply bg-theme-primary/50;
   }
 
   .content-frame-in {
@@ -53,7 +53,7 @@
   }
 
   .content-back {
-    @apply bg-theme-content/90;
+    @apply bg-theme-content/70;
   }
 
   .content-in-back {
