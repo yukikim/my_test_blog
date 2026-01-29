@@ -101,9 +101,9 @@ export default async function ProfilePage() {
                   <li>OG画像の自動生成</li>
                 </ul>
 
-                <p className="mb-4">プロジェクトは
+                <p className="mb-4">プロジェクト : 
                   <Link href="https://github.com/yukikim/my_test_blog" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">GitHub</Link>
-                  で公開しています。</p>
+                  </p>
 
               </div>
             </article>
