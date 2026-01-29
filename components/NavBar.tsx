@@ -9,8 +9,8 @@ import Link from "next/link";
 const navigation = [
     // { name: 'home', href: '/' },
     { name: 'Post list', href: '/blogs' },
-    { name: 'Categories', href: '/categories' },
-    { name: 'Tags', href: '/tags' },
+    // { name: 'Categories', href: '/categories' },
+    // { name: 'Tags', href: '/tags' },
     { name: 'Profile', href: '/profile' },
     { name: 'Work History', href: '/profile/work-history' },
 ]
