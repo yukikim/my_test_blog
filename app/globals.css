@@ -77,7 +77,7 @@
   }
 
   .sub-text-color {
-    @apply text-stone-300;
+    @apply text-[#c4c4c4];
   }
 
   .main-text-color {
