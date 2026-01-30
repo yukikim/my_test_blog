@@ -44,7 +44,7 @@ export default async function ProfilePage() {
                   IllustratorやPhotoshopを手にデザインに没頭した日々から始まり、現在はReactやTypeScript、Node.jsなどを用いたモダンなWeb開発をメインに活動しています。</p>
                 <p className="mb-4 text-sm">
                   サーバー設定からアプリの実装まで一貫して携わってきた経験があるため、<br />
-                  <strong>「デザインの意図を汲み取ったスムーズな実装」</strong>には特に自信があります。<br />
+                  「デザインの意図を汲み取ったスムーズな実装」には特に自信があります。<br />
                   なかでも、ユーザーが直接触れる「フロントエンド開発」と「Webデザイン」が大好きです。<br />
                   設計図を描くよりも、実際に手を動かして形にしていく「実装作業」にやりがいを感じます。</p>
                 <p className="mb-4 text-sm">
