@@ -2,6 +2,7 @@ import Link from "next/link";
 import { microcmsClient } from "@/lib/microcms";
 import type { Tag } from "@/types/tag";
 import type { Post } from "@/types/post";
+import { TagIcon, CalendarIcon } from '@heroicons/react/24/outline'
 
 type TagWithCount = Tag & { count: number };
 
@@ -67,7 +68,7 @@ export default async function TagList() {
                 href={`/tags/${t.id}`}
                 className="inline-flex items-center rounded-full px-3 py-1 text-xs content-frame-in text-gray-300 hover:back-color"
               >
-                <span className="mr-1">#{t.tag ?? "tag"}</span>
+                <span className="mr-1"><TagIcon className="inline-block w-4 h-4 mr-1" />{t.tag ?? "tag"}</span>
                 <span className="text-zinc-200">({t.count})</span>
               </Link>
             </li>

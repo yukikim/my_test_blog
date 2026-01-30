@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Post } from "@/types/post";
+import { TagIcon, CalendarIcon } from '@heroicons/react/24/outline'
 
 type PostCardVariant = "grid" | "full";
 
@@ -52,7 +53,7 @@ export default function PostCard({
                 href={`/tags/${t.id}`}
                 className="rounded-full bg-theme-accent px-2 py-0.5 light-text-color hover:bg-theme-light"
               >
-                #{t.tag ?? "tag"}
+                <TagIcon className="inline-block w-4 h-4 mr-1" />{t.tag ?? "tag"}
               </Link>
             ))}
           </div>

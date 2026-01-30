@@ -103,6 +103,7 @@ export default async function ProfilePage() {
                   <li>関連記事表示（同カテゴリ・同タグ）</li>
                   <li>OG画像の自動生成</li>
                 </ul>
+                <p>使用している画像は私が撮影したものです。</p>
 
                 <p className="mb-4">プロジェクト : 
                   <Link href="https://github.com/yukikim/my_test_blog" className="text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">GitHub</Link>
