@@ -35,10 +35,11 @@ export default function BackgroundWrapper({ children }: BackgroundWrapperProps) 
 
   return (
     <div
+      className="bg-transparent"
       // className="bg-cover bg-fixed bg-position-[center_top] bg-no-repeat"
       // style={{ backgroundImage: `url('${backgroundUrl}')` }}
     >
-      <div id="background" className="bg-cover bg-no-repeat bg-position-[center_top] fixed inset-0 -z-20" style={{ backgroundImage: `url('${backgroundUrl}')` }}></div>
+      <div id="background" className="bg-cover bg-no-repeat bg-position-[top_center] fixed inset-0 -z-10 bg-gray-500" style={{ backgroundImage: `url('${backgroundUrl}')` }}></div>
       <div className="back-color min-h-[calc(100vh-180px)]">
         <div className="relative isolate px-0 lg:px-8">
           <div
